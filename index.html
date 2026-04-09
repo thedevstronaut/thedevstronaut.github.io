@@ -9,7 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --bg: #f7f6f2;
     --surface: #ffffff;
@@ -36,498 +35,111 @@
     --font: 'DM Sans', sans-serif;
     --mono: 'DM Mono', monospace;
   }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--text);
-    font-size: 16px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
+  body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; min-height: 100vh; }
   .page { display: none; }
   .page.active { display: block; }
-
-  .wrap {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
-
-  /* NAV */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(247,246,242,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  nav {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-  .nav-logo {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-    cursor: pointer;
-    letter-spacing: -0.01em;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  .nav-links {
-    display: flex;
-    gap: 1.75rem;
-    align-items: center;
-  }
-  .nav-links a {
-    font-size: 14px;
-    color: var(--muted);
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.15s;
-  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
+  header { position: sticky; top: 0; z-index: 100; background: rgba(247,246,242,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  nav { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; }
+  .nav-logo span { font-size: 15px; font-weight: 500; color: var(--text); letter-spacing: -0.01em; white-space: nowrap; }
+  .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+  .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; cursor: pointer; transition: color 0.15s; }
   .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    background: var(--text);
-    color: var(--bg);
-    border: none;
-    border-radius: 999px;
-    padding: 8px 20px;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: var(--font);
-    cursor: pointer;
-    transition: opacity 0.15s;
-    white-space: nowrap;
-  }
+  .nav-cta { background: var(--text); color: var(--bg); border: none; border-radius: 999px; padding: 8px 20px; font-size: 13px; font-weight: 500; font-family: var(--font); cursor: pointer; transition: opacity 0.15s; white-space: nowrap; }
   .nav-cta:hover { opacity: 0.82; }
-
-  /* LAYOUT BLOCKS */
   .section { padding: 4.5rem 0; }
   .section + .section { padding-top: 0; }
-
-  /* HERO */
-  .hero {
-    padding: 5rem 0 4rem;
-  }
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
-    align-items: center;
-  }
-  .hero-available {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--teal-text);
-    background: var(--teal-light);
-    padding: 5px 14px;
-    border-radius: 999px;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.01em;
-  }
-  .hero-available-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--teal);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.85); }
-  }
-  .hero h1 {
-    font-size: clamp(36px, 5vw, 52px);
-    font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    color: var(--text);
-    margin-bottom: 1.25rem;
-  }
-  .hero h1 strong {
-    font-weight: 500;
-    color: var(--accent);
-  }
-  .hero-sub {
-    font-size: 17px;
-    color: var(--muted);
-    line-height: 1.65;
-    max-width: 440px;
-    margin-bottom: 2rem;
-  }
+  .hero { padding: 5rem 0 4rem; }
+  .hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+  .hero-available { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; color: var(--teal-text); background: var(--teal-light); padding: 5px 14px; border-radius: 999px; margin-bottom: 1.5rem; letter-spacing: 0.01em; }
+  .hero-available-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+  .hero h1 { font-size: clamp(36px, 5vw, 52px); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; color: var(--text); margin-bottom: 1.25rem; }
+  .hero h1 strong { font-weight: 500; color: var(--accent); }
+  .hero-sub { font-size: 17px; color: var(--muted); line-height: 1.65; max-width: 440px; margin-bottom: 2rem; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 11px 24px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: var(--font);
-    cursor: pointer;
-    transition: all 0.15s;
-    text-decoration: none;
-    border: 1px solid transparent;
-  }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 11px 24px; border-radius: 999px; font-size: 14px; font-weight: 500; font-family: var(--font); cursor: pointer; transition: all 0.15s; text-decoration: none; border: 1px solid transparent; }
   .btn-dark { background: var(--text); color: var(--bg); }
   .btn-dark:hover { opacity: 0.82; }
   .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-mid); }
   .btn-ghost:hover { background: var(--surface); }
-  .hero-avatar {
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: var(--accent-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--accent-text);
-    letter-spacing: -0.02em;
-    flex-shrink: 0;
-    border: 1px solid var(--border);
-  }
-
-  /* SPECIALTIES */
-  .spec-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 3rem;
-  }
-  .spec-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-  }
-  .spec-icon {
-    width: 38px; height: 38px;
-    border-radius: var(--radius);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1rem;
-    font-size: 17px;
-  }
-  .spec-card h3 {
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
-  .spec-card p {
-    font-size: 13.5px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  /* SECTION HEADERS */
-  .eyebrow {
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--hint);
-    margin-bottom: 0.5rem;
-  }
-  .section-heading {
-    font-size: 26px;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 1.5rem;
-  }
-
-  /* PROJECT CARDS */
-  .project-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    cursor: pointer;
-    transition: border-color 0.15s, transform 0.15s;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-  .project-card:hover {
-    border-color: var(--border-mid);
-    transform: translateY(-2px);
-  }
-  .project-card h3 {
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.5rem;
-  }
-  .project-card p {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .view-link {
-    font-size: 12px;
-    color: var(--accent);
-    font-weight: 500;
-  }
-
-  /* TAGS */
+  .hero-avatar { width: 130px; height: 130px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border); background: var(--accent-light); }
+  .hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 3rem; }
+  .spec-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+  .spec-icon { width: 38px; height: 38px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 17px; }
+  .spec-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  .spec-card p { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+  .eyebrow { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--hint); margin-bottom: 0.5rem; }
+  .section-heading { font-size: 26px; font-weight: 400; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.5rem; }
+  .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; cursor: pointer; transition: border-color 0.15s, transform 0.15s; text-decoration: none; color: inherit; display: block; }
+  .project-card:hover { border-color: var(--border-mid); transform: translateY(-2px); }
+  .project-thumb { width: 100%; height: 180px; overflow: hidden; background: #0f0f0e; }
+  .project-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .project-thumb.light { background: #f8f8f8; }
+  .project-card-body { padding: 1.25rem; }
+  .project-card h3 { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+  .project-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+  .view-link { font-size: 12px; color: var(--accent); font-weight: 500; }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag {
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 999px;
-    font-weight: 400;
-  }
+  .tag { font-size: 11px; padding: 3px 10px; border-radius: 999px; font-weight: 400; }
   .tag-blue { background: var(--accent-light); color: var(--accent-text); }
   .tag-teal { background: var(--teal-light); color: var(--teal-text); }
   .tag-amber { background: var(--amber-light); color: var(--amber-text); }
   .tag-purple { background: var(--purple-light); color: var(--purple-text); }
-
-  /* ABOUT */
-  .about-body {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 1rem;
-    max-width: 640px;
-  }
+  .about-body { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; max-width: 640px; }
   .skills-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
-  .skill-pill {
-    font-size: 12.5px;
-    padding: 5px 14px;
-    border-radius: 999px;
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border-mid);
-  }
-
-  /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-  .contact-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.25rem;
-  }
-  .contact-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--hint);
-    margin-bottom: 6px;
-  }
-  .contact-value {
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--text);
-    word-break: break-all;
-  }
+  .skill-pill { font-size: 12.5px; padding: 5px 14px; border-radius: 999px; background: var(--surface); color: var(--text); border: 1px solid var(--border-mid); }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 12px; }
+  .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--hint); margin-bottom: 6px; }
+  .contact-value { font-size: 13.5px; font-weight: 500; color: var(--text); word-break: break-all; }
   .contact-value a { color: var(--accent); text-decoration: none; }
   .contact-value a:hover { text-decoration: underline; }
-  .address-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.25rem;
-  }
-
-  /* DIVIDER */
+  .address-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
   hr { border: none; border-top: 1px solid var(--border); margin: 0; }
-
-  /* PROJECT DETAIL PAGES */
   .detail-wrap { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
-  .back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13.5px;
-    color: var(--muted);
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-family: var(--font);
-    padding: 0;
-    margin-bottom: 2rem;
-    transition: color 0.15s;
-  }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--muted); cursor: pointer; background: none; border: none; font-family: var(--font); padding: 0; margin-bottom: 2rem; transition: color 0.15s; }
   .back-btn:hover { color: var(--text); }
-  .detail-hero-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xl);
-    padding: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .detail-hero-card h1 {
-    font-size: clamp(26px, 4vw, 36px);
-    font-weight: 400;
-    letter-spacing: -0.025em;
-    margin-bottom: 0.75rem;
-    line-height: 1.15;
-  }
-  .detail-hero-card .detail-intro {
-    font-size: 15.5px;
-    color: var(--muted);
-    line-height: 1.7;
-    max-width: 620px;
-    margin-top: 1.25rem;
-  }
-  .detail-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.75rem;
-    margin-bottom: 1.5rem;
-  }
-  .detail-section h3 {
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.75rem;
-    color: var(--text);
-  }
-  .detail-section p {
-    font-size: 14.5px;
-    color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 0.75rem;
-  }
+  .detail-hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; margin-bottom: 1.5rem; }
+  .detail-hero-img { width: 100%; height: 260px; overflow: hidden; }
+  .detail-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .detail-hero-body { padding: 2rem 2.5rem; }
+  .detail-hero-body h1 { font-size: clamp(24px, 4vw, 34px); font-weight: 400; letter-spacing: -0.025em; margin-bottom: 0.75rem; line-height: 1.15; }
+  .detail-intro { font-size: 15.5px; color: var(--muted); line-height: 1.7; max-width: 620px; margin-top: 1.25rem; }
+  .detail-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 1.5rem; }
+  .detail-section h3 { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 0.75rem; color: var(--text); }
+  .detail-section p { font-size: 14.5px; color: var(--muted); line-height: 1.75; margin-bottom: 0.75rem; }
   .detail-section p:last-child { margin-bottom: 0; }
-
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 1rem;
-  }
-  .mini-card {
-    background: var(--bg);
-    border-radius: var(--radius);
-    padding: 1rem 1.1rem;
-  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 1rem; }
+  .mini-card { background: var(--bg); border-radius: var(--radius); padding: 1rem 1.1rem; }
   .mini-card-label { font-size: 11px; color: var(--hint); margin-bottom: 4px; letter-spacing: 0.04em; }
   .mini-card-title { font-size: 13.5px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
   .mini-card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-  .stat-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 1rem;
-  }
-  .stat-row-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 10px;
-  }
-  .stat {
-    background: var(--bg);
-    border-radius: var(--radius);
-    padding: 1rem;
-    text-align: center;
-  }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 1rem; }
+  .stat-row-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .stat { background: var(--bg); border-radius: var(--radius); padding: 1rem; text-align: center; }
   .stat-num { font-size: 22px; font-weight: 500; color: var(--text); letter-spacing: -0.02em; }
   .stat-label { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
-
-  .feature-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1rem; }
-  .feature-pill {
-    font-size: 12px;
-    padding: 4px 12px;
-    border-radius: 999px;
-    background: var(--bg);
-    color: var(--text);
-    border: 1px solid var(--border-mid);
-  }
-
-  .outcome-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1rem; }
-  .outcome-pill {
-    font-size: 12px;
-    padding: 5px 14px;
-    border-radius: 999px;
-    background: var(--teal-light);
-    color: var(--teal-text);
-    font-weight: 500;
-  }
-
-  .highlight-box {
-    background: var(--accent-light);
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    margin-top: 1rem;
-  }
-  .highlight-box p {
-    font-size: 13.5px;
-    color: var(--accent-text);
-    line-height: 1.65;
-    margin: 0;
-  }
-
-  .arch-grid {
-    display: grid;
-    grid-template-columns: 1fr 28px 1fr 28px 1fr;
-    gap: 0;
-    align-items: center;
-    margin-top: 1rem;
-  }
+  .arch-grid { display: grid; grid-template-columns: 1fr 28px 1fr 28px 1fr; gap: 0; align-items: center; margin-top: 1rem; }
   .arch-arrow { text-align: center; font-size: 18px; color: var(--hint); }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 0;
-    margin-top: 4rem;
-  }
-  .footer-inner {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  .feature-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1rem; }
+  .feature-pill { font-size: 12px; padding: 4px 12px; border-radius: 999px; background: var(--bg); color: var(--text); border: 1px solid var(--border-mid); }
+  .outcome-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1rem; }
+  .outcome-pill { font-size: 12px; padding: 5px 14px; border-radius: 999px; background: var(--teal-light); color: var(--teal-text); font-weight: 500; }
+  .highlight-box { background: var(--accent-light); border-radius: var(--radius); padding: 1rem 1.25rem; margin-top: 1rem; }
+  .highlight-box p { font-size: 13.5px; color: var(--accent-text); line-height: 1.65; margin: 0; }
+  footer { border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 4rem; }
+  .footer-inner { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
   .footer-inner p { font-size: 13px; color: var(--hint); }
   .footer-inner a { color: var(--muted); text-decoration: none; font-size: 13px; }
   .footer-inner a:hover { color: var(--text); }
-
-  /* RESPONSIVE */
   @media (max-width: 640px) {
     .hero-inner { grid-template-columns: 1fr; }
-    .hero-avatar { display: none; }
     .spec-grid { grid-template-columns: 1fr; }
     .project-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
@@ -535,7 +147,6 @@
     .stat-row { grid-template-columns: repeat(2, 1fr); }
     .stat-row-4 { grid-template-columns: repeat(2, 1fr); }
     .arch-grid { grid-template-columns: 1fr; }
-    .arch-arrow { transform: rotate(90deg); }
     .nav-links { display: none; }
   }
 </style>
@@ -544,7 +155,10 @@
 
 <header>
   <nav>
-    <a class="nav-logo" onclick="showPage('home')">Mathieu van den Bos.</a>
+    <a class="nav-logo" onclick="showPage('home')">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="10" fill="#0f0f0e"/><rect x="2" y="2" width="40" height="40" rx="8" fill="#1a1a1a"/><text x="22" y="19" font-family="DM Sans,system-ui,sans-serif" font-size="8" font-weight="300" fill="#ffffff" text-anchor="middle" letter-spacing="3" opacity="0.4">MV</text><text x="22" y="32" font-family="DM Sans,system-ui,sans-serif" font-size="8" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="3">DB</text></svg>
+      <span>Mathieu van den Bos</span>
+    </a>
     <div class="nav-links">
       <a onclick="showPage('home'); scrollToId('work')">Work</a>
       <a onclick="showPage('home'); scrollToId('about')">About</a>
@@ -554,17 +168,12 @@
   </nav>
 </header>
 
-<!-- HOME PAGE -->
 <div id="page-home" class="page active">
-
   <div class="wrap">
     <div class="hero">
       <div class="hero-inner">
         <div>
-          <div class="hero-available">
-            <span class="hero-available-dot"></span>
-            Available for projects
-          </div>
+          <div class="hero-available"><span class="hero-available-dot"></span>Available for projects</div>
           <h1>Relatics expert.<br><strong>Product thinker.</strong></h1>
           <p class="hero-sub">I build powerful Relatics applications and guide teams as Product Owner — turning complex requirements into systems that actually work.</p>
           <div class="hero-actions">
@@ -572,18 +181,20 @@
             <button class="btn btn-ghost" onclick="scrollToId('contact')">Get in touch</button>
           </div>
         </div>
-        <div class="hero-avatar">MvdB</div>
+        <div class="hero-avatar">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjMWExYTFhIi8+CjxyZWN0IHg9IjgiIHk9IjgiIHdpZHRoPSIzODQiIGhlaWdodD0iMzg0IiByeD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1kYXNoYXJyYXk9IjYgNCIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNTUiIHI9IjY1IiBmaWxsPSIjMmEyYTJhIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iMSIvPgo8cGF0aCBkPSJNOTAgMzQwIEM5MCAyNzAgMzEwIDI3MCAzMTAgMzQwIiBmaWxsPSIjMmEyYTJhIiBzdHJva2U9IiM0NDQiIHN0cm9rZS13aWR0aD0iMSIvPgo8dGV4dCB4PSIyMDAiIHk9IjM5MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjNTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+UFJPRklMRSBQSE9UTzwvdGV4dD4KPC9zdmc+" alt="Mathieu van den Bos" id="profile-img">
+        </div>
       </div>
     </div>
 
     <div class="spec-grid">
       <div class="spec-card">
-        <div class="spec-icon" style="background: var(--accent-light);">⚙</div>
+        <div class="spec-icon" style="background:var(--accent-light);">⚙</div>
         <h3>Relatics application development</h3>
         <p>I design and build Relatics environments for complex engineering and infrastructure projects — data models, workspaces, and integrations.</p>
       </div>
       <div class="spec-card">
-        <div class="spec-icon" style="background: var(--purple-light);">◈</div>
+        <div class="spec-icon" style="background:var(--purple-light);">◈</div>
         <h3>Product Owner</h3>
         <p>I bridge business and delivery teams — owning the backlog, shaping UX, and steering products from idea to launch with clarity and decisiveness.</p>
       </div>
@@ -595,55 +206,50 @@
       <p class="eyebrow">Portfolio</p>
       <p class="section-heading">Selected work</p>
       <div class="project-grid">
-
         <a class="project-card" onclick="showPage('qirion')">
-          <h3>Qirion library &amp; project workspace</h3>
-          <p>Scalable Relatics setup replacing fragmented Excel-based requirements management — now powering 300+ active projects.</p>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag tag-blue">Relatics</span>
-              <span class="tag tag-teal">Workspace design</span>
+          <div class="project-thumb"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDgwMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSIjMGQxMTE3Ii8+CjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDE4IiByeD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWUyYTNhIiBzdHJva2Utd2lkdGg9IjEiLz4KPHJlY3QgeD0iNDAiIHk9IjUwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjI4IiByeD0iNCIgZmlsbD0iIzBkMjEzNyIvPgo8cmVjdCB4PSI0MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjgiIHJ4PSI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjUiLz4KPHRleHQgeD0iMTQwIiB5PSI2OSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMzc4YWRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+TElCUkFSWSBXT1JLU1BBQ0U8L3RleHQ+CjxyZWN0IHg9IjMwMCIgeT0iNTAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjgiIHJ4PSI0IiBmaWxsPSIjMGQyMTM3IiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iMzkwIiB5PSI2OSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMzc4YWRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+UFJPSkVDVCBXUyAwMDE8L3RleHQ+CjxyZWN0IHg9IjUwMCIgeT0iNTAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjgiIHJ4PSI0IiBmaWxsPSIjMGQyMTM3IiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iNTkwIiB5PSI2OSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMzc4YWRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+UFJPSkVDVCBXUyAwMDI8L3RleHQ+CjxsaW5lIHgxPSIyNDAiIHkxPSI2NCIgeDI9IjMwMCIgeTI9IjY0IiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjUiLz4KPGxpbmUgeDE9IjQ4MCIgeTE9IjY0IiB4Mj0iNTAwIiB5Mj0iNjQiIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMyIvPgo8cmVjdCB4PSI0MCIgeT0iMTIwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjEiIGZpbGw9IiMxZTJhM2EiLz4KPHJlY3QgeD0iNDAiIHk9IjE0MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjEyMCIgeT0iMTQwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjI4MCIgeT0iMTQwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjQwMCIgeT0iMTQwIiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiMwZDIxMzciLz4KPHJlY3QgeD0iNDAiIHk9IjE2MiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjEyMCIgeT0iMTYyIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjI4MCIgeT0iMTYyIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjQwMCIgeT0iMTYyIiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiMwYTNhMWEiLz4KPHJlY3QgeD0iNDAiIHk9IjE4NCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjEyMCIgeT0iMTg0IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjI4MCIgeT0iMTg0IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjQwMCIgeT0iMTg0IiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiMwZDIxMzciLz4KPHJlY3QgeD0iNDAiIHk9IjIwNiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjEyMCIgeT0iMjA2IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjI4MCIgeT0iMjA2IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjQwMCIgeT0iMjA2IiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiMwYTNhMWEiLz4KPHJlY3QgeD0iNDAiIHk9IjI0MCIgd2lkdGg9IjM0MCIgaGVpZ2h0PSI2MCIgcng9IjYiIGZpbGw9IiMwZDIxMzciIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNCIvPgo8dGV4dCB4PSI2MCIgeT0iMjYyIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM1NTUiIGxldHRlci1zcGFjaW5nPSIxIj5SRVFVSVJFTUVOVFM8L3RleHQ+Cjx0ZXh0IHg9IjYwIiB5PSIyODIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzM3OGFkZCI+MzAwKzwvdGV4dD4KPHJlY3QgeD0iNDIwIiB5PSIyNDAiIHdpZHRoPSIzNDAiIGhlaWdodD0iNjAiIHJ4PSI2IiBmaWxsPSIjMGQyMTM3IiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iNDQwIiB5PSIyNjIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzU1NSIgbGV0dGVyLXNwYWNpbmc9IjEiPkFDVElWRSBQUk9KRUNUUzwvdGV4dD4KPHRleHQgeD0iNDQwIiB5PSIyODIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzM3OGFkZCI+MzAwKzwvdGV4dD4KPHRleHQgeD0iNDAwIiB5PSI0MDAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlFJUklPTiDCtyBSRUxBVElDUyBXT1JLU1BBQ0U8L3RleHQ+Cjwvc3ZnPg==" alt="Qirion workspace screenshot"></div>
+          <div class="project-card-body">
+            <h3>Qirion library &amp; project workspace</h3>
+            <p>Scalable Relatics setup replacing fragmented Excel-based requirements management — now powering 300+ active projects.</p>
+            <div class="card-footer">
+              <div class="tags"><span class="tag tag-blue">Relatics</span><span class="tag tag-teal">Workspace design</span></div>
+              <span class="view-link">View →</span>
             </div>
-            <span class="view-link">View →</span>
           </div>
         </a>
-
         <a class="project-card" onclick="showPage('tennet')">
-          <h3>TenneT 2GW programme</h3>
-          <p>Library → partnership → contract architecture managing 20,000+ requirements for TenneT's flagship offshore grid build-out.</p>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag tag-blue">Relatics</span>
-              <span class="tag tag-amber">Energy infrastructure</span>
+          <div class="project-thumb"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDgwMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSIjMGEwZTE0Ii8+CjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDE4IiByeD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWUyODIwIiBzdHJva2Utd2lkdGg9IjEiLz4KPGNpcmNsZSBjeD0iNDAwIiBjeT0iMTkwIiByPSIxMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBmMmExYSIgc3Ryb2tlLXdpZHRoPSI0MCIvPgo8Y2lyY2xlIGN4PSI0MDAiIGN5PSIxOTAiIHI9IjEzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPgo8Y2lyY2xlIGN4PSI0MDAiIGN5PSIxOTAiIHI9IjkwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZDllNzUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjIiLz4KPGNpcmNsZSBjeD0iNDAwIiBjeT0iMTkwIiByPSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4xNSIvPgo8cmVjdCB4PSIxNjAiIHk9IjE3NSIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI4IiByeD0iNSIgZmlsbD0iIzBhMWYxMiIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIyMDAiIHk9IjE5MyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMxZDllNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIwLjUiPkxJQlJBUlk8L3RleHQ+CjxsaW5lIHgxPSIyNDAiIHkxPSIxODkiIHgyPSIzMTAiIHkyPSIxODkiIHN0cm9rZT0iIzFkOWU3NSIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNiIvPgo8cmVjdCB4PSIzMTAiIHk9IjE3NSIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI4IiByeD0iNSIgZmlsbD0iIzBhMWYxMiIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNTAiIHk9IjE5MyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMxZDllNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIwLjUiPlBBUlRORVI8L3RleHQ+CjxsaW5lIHgxPSIzOTAiIHkxPSIxODkiIHgyPSI0NjAiIHkyPSIxODkiIHN0cm9rZT0iIzFkOWU3NSIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNiIvPgo8cmVjdCB4PSI0NjAiIHk9IjE3NSIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI4IiByeD0iNSIgZmlsbD0iIzBhMWYxMiIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSI1MDAiIHk9IjE5MyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMxZDllNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIwLjUiPkNPTlRSQUNUPC90ZXh0Pgo8dGV4dCB4PSIyMDAiIHk9IjI5MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMzMzIiBsZXR0ZXItc3BhY2luZz0iMSI+MjAsMDAwKzwvdGV4dD4KPHRleHQgeD0iMjAwIiB5PSIzMDQiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4IiBmaWxsPSIjMzMzIiBsZXR0ZXItc3BhY2luZz0iMSI+UkVRVUlSRU1FTlRTPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjI5MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+MSwwMDArPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjMwNCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZpbGw9IiMzMzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIxIj5VU0VSUyAvIE1PTlRIPC90ZXh0Pgo8dGV4dCB4PSI2MDAiIHk9IjI5MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0iZW5kIiBsZXR0ZXItc3BhY2luZz0iMSI+MjggR1c8L3RleHQ+Cjx0ZXh0IHg9IjYwMCIgeT0iMzA0IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOCIgZmlsbD0iIzMzMyIgdGV4dC1hbmNob3I9ImVuZCIgbGV0dGVyLXNwYWNpbmc9IjEiPkNBUEFDSVRZPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjQwMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+VEVOTkVUIDJHVyDCtyBOT1JUSCBTRUEgUFJPR1JBTU1FPC90ZXh0Pgo8L3N2Zz4=" alt="TenneT programme workspace"></div>
+          <div class="project-card-body">
+            <h3>TenneT 2GW programme</h3>
+            <p>Library → partnership → contract architecture managing 20,000+ requirements for TenneT's flagship offshore grid build-out.</p>
+            <div class="card-footer">
+              <div class="tags"><span class="tag tag-blue">Relatics</span><span class="tag tag-amber">Energy infrastructure</span></div>
+              <span class="view-link">View →</span>
             </div>
-            <span class="view-link">View →</span>
           </div>
         </a>
-
         <a class="project-card" onclick="showPage('gappless')">
-          <h3>Gappless — Product Owner</h3>
-          <p>Part-time PO with UX involvement for a construction SaaS — shaping backlog, user flows, and product direction across web and mobile.</p>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag tag-purple">Product Owner</span>
-              <span class="tag tag-teal">UX</span>
+          <div class="project-thumb light"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDgwMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSIjZjhmOGY4Ii8+CjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDE4IiByeD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTBlMGUwIiBzdHJva2Utd2lkdGg9IjEiLz4KPHJlY3QgeD0iNDAiIHk9IjQwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjMyMCIgcng9IjEwIiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNlOGU4ZTgiIHN0cm9rZS13aWR0aD0iMSIvPgo8cmVjdCB4PSI0MCIgeT0iNDAiIHdpZHRoPSIzNDAiIGhlaWdodD0iNDQiIHJ4PSIxMCIgZmlsbD0iI2YyZjJmMiIgc3Ryb2tlPSIjZThlOGU4IiBzdHJva2Utd2lkdGg9IjEiLz4KPHJlY3QgeD0iNDAiIHk9Ijc0IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEwIiByeD0iMCIgZmlsbD0iI2YyZjJmMiIvPgo8dGV4dCB4PSI1NiIgeT0iNjYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzk5OSIgbGV0dGVyLXNwYWNpbmc9IjEiPldFQiBQTEFURk9STTwvdGV4dD4KPHJlY3QgeD0iNTYiIHk9IjEwNCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI4IiByeD0iMiIgZmlsbD0iI2U4ZThlOCIvPgo8cmVjdCB4PSI1NiIgeT0iMTIwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZjBmMGYwIi8+CjxyZWN0IHg9IjU2IiB5PSIxMzIiIHdpZHRoPSIyNDAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iNTYiIHk9IjE1MiIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyOCIgcng9IjUiIGZpbGw9IiMxYTRmZDYiIG9wYWNpdHk9IjAuOSIvPgo8cmVjdCB4PSIxODgiIHk9IjE1MiIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyOCIgcng9IjUiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iNTYiIHk9IjE5OCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIxIiBmaWxsPSIjZjBmMGYwIi8+CjxyZWN0IHg9IjU2IiB5PSIyMTQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iI2U4ZThlOCIvPgo8cmVjdCB4PSIxMjYiIHk9IjIxNCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iI2YwZjBmMCIvPgo8cmVjdCB4PSIyODYiIHk9IjIxNCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZThmNGVlIi8+CjxyZWN0IHg9IjU2IiB5PSIyMjgiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iI2U4ZThlOCIvPgo8cmVjdCB4PSIxMjYiIHk9IjIyOCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iI2YwZjBmMCIvPgo8cmVjdCB4PSI1NiIgeT0iMjQyIiB3aWR0aD0iNjAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiNlOGU4ZTgiLz4KPHJlY3QgeD0iMTI2IiB5PSIyNDIiIHdpZHRoPSIxMjAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iNTYiIHk9IjI1NiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZThlOGU4Ii8+CjxyZWN0IHg9IjEyNiIgeT0iMjU2IiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZjBmMGYwIi8+CjxyZWN0IHg9IjQyMCIgeT0iODAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMjgwIiByeD0iMTQiIGZpbGw9IiMxYTFhMWEiLz4KPHJlY3QgeD0iNDI4IiB5PSI5NiIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIyNDgiIHJ4PSI4IiBmaWxsPSIjMTExIi8+CjxyZWN0IHg9IjQzNiIgeT0iMTEwIiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjE4IiByeD0iMyIgZmlsbD0iIzFlMWUxZSIvPgo8dGV4dCB4PSI1MDAiIHk9IjEyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIxIj5NT0JJTEUgQVBQPC90ZXh0Pgo8cmVjdCB4PSI0MzYiIHk9IjEzNiIgd2lkdGg9IjEyOCIgaGVpZ2h0PSI2MCIgcng9IjQiIGZpbGw9IiMxZTFlMWUiLz4KPHJlY3QgeD0iNDQ0IiB5PSIxNDQiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzJhMmEyYSIvPgo8cmVjdCB4PSI0NDQiIHk9IjE1NiIgd2lkdGg9IjExMiIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzJhMmEyYSIvPgo8cmVjdCB4PSI0NDQiIHk9IjE2OCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWE0ZmQ2IiBvcGFjaXR5PSIwLjYiLz4KPHJlY3QgeD0iNDM2IiB5PSIyMDYiIHdpZHRoPSIxMjgiIGhlaWdodD0iNDAiIHJ4PSI0IiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQ0NCIgeT0iMjE0IiB3aWR0aD0iNTAiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiMyYTJhMmEiLz4KPHJlY3QgeD0iNDQ0IiB5PSIyMjQiIHdpZHRoPSIxMTIiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiMyYTJhMmEiLz4KPHJlY3QgeD0iNDM2IiB5PSIyNTYiIHdpZHRoPSIxMjgiIGhlaWdodD0iNDAiIHJ4PSI0IiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQ0NCIgeT0iMjY0IiB3aWR0aD0iNzAiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiMyYTJhMmEiLz4KPHJlY3QgeD0iNDQ0IiB5PSIyNzQiIHdpZHRoPSI5MCIgaGVpZ2h0PSI1IiByeD0iMiIgZmlsbD0iIzJhMmEyYSIvPgo8bGluZSB4MT0iMzgwIiB5MT0iMjEwIiB4Mj0iNDIwIiB5Mj0iMjEwIiBzdHJva2U9IiNlMGUwZTAiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWRhc2hhcnJheT0iNCAzIi8+Cjx0ZXh0IHg9IjQwMCIgeT0iNDAwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiNiYmIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIyIj5HQVBQTEVTUyDCtyBXRUIgJmFtcDsgTU9CSUxFIFBMQVRGT1JNPC90ZXh0Pgo8L3N2Zz4=" alt="Gappless platform screenshot"></div>
+          <div class="project-card-body">
+            <h3>Gappless — Product Owner</h3>
+            <p>Part-time PO with UX involvement for a construction SaaS — shaping backlog, user flows, and product direction across web and mobile.</p>
+            <div class="card-footer">
+              <div class="tags"><span class="tag tag-purple">Product Owner</span><span class="tag tag-teal">UX</span></div>
+              <span class="view-link">View →</span>
             </div>
-            <span class="view-link">View →</span>
           </div>
         </a>
-
         <a class="project-card" onclick="showPage('dpi')">
-          <h3>Dutch Process Innovators</h3>
-          <p>Two Relatics workspaces — a systems engineering MVP for client projects and an internal hiring tracker with Microsoft Forms integration.</p>
-          <div class="card-footer">
-            <div class="tags">
-              <span class="tag tag-blue">Relatics</span>
-              <span class="tag tag-purple">Multi-workspace</span>
+          <div class="project-thumb"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDgwMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSIjMGYwZjBlIi8+CjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDE4IiByeD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjEiLz4KPHJlY3QgeD0iNDAiIHk9IjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI4MCIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjx0ZXh0IHg9IjU2IiB5PSI3NCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiM0NDQiIGxldHRlci1zcGFjaW5nPSIyIj5QUk9KRUNUIFdPUktTUEFDRTwvdGV4dD4KPHJlY3QgeD0iNTYiIHk9Ijg2IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMjIyIi8+CjxyZWN0IHg9IjU2IiB5PSIxMDAiIHdpZHRoPSIyODAiIGhlaWdodD0iMSIgZmlsbD0iIzFlMWUxZSIvPgo8cmVjdCB4PSI1NiIgeT0iMTEyIiB3aWR0aD0iNTAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiMxZTFlMWUiLz4KPHJlY3QgeD0iMTE2IiB5PSIxMTIiIHdpZHRoPSIxMzAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiMxZTFlMWUiLz4KPHJlY3QgeD0iNTYiIHk9IjEyNiIgd2lkdGg9IjUwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjExNiIgeT0iMTI2IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWEzYTE0Ii8+CjxyZWN0IHg9IjU2IiB5PSIxNDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzFlMWUxZSIvPgo8cmVjdCB4PSIxMTYiIHk9IjE0MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzFlMWUxZSIvPgo8cmVjdCB4PSI1NiIgeT0iMTU0IiB3aWR0aD0iNTAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiMxZTFlMWUiLz4KPHJlY3QgeD0iMTE2IiB5PSIxNTQiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzFhM2ExNCIvPgo8cmVjdCB4PSI1NiIgeT0iMTc0IiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjIyIiByeD0iNCIgZmlsbD0iIzFhMmE0YSIgc3Ryb2tlPSIjMWE0ZmQ2IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC44Ii8+Cjx0ZXh0IHg9IjEyNiIgeT0iMTg4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0iIzM3OGFkZCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UmVxdWlyZW1lbnRzPC90ZXh0Pgo8cmVjdCB4PSIyMDYiIHk9IjE3NCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIyMiIgcng9IjQiIGZpbGw9IiMxYTJhNGEiIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNSIvPgo8dGV4dCB4PSIyNTYiIHk9IjE4OCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMzNzhhZGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9iamVjdHM8L3RleHQ+CjxyZWN0IHg9IjU2IiB5PSIyMTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMjIiIHJ4PSI0IiBmaWxsPSIjMWEyYTRhIiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjUiLz4KPHRleHQgeD0iMTA2IiB5PSIyMjQiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmaWxsPSIjMzc4YWRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Xb3JrIHBhY2thZ2VzPC90ZXh0Pgo8cmVjdCB4PSIxNjYiIHk9IjIxMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIyMiIgcng9IjQiIGZpbGw9IiMxYTJhNGEiIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNSIvPgo8dGV4dCB4PSIyMTYiIHk9IjIyNCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMzNzhhZGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFjdGl2aXRpZXM8L3RleHQ+CjxyZWN0IHg9IjQyMCIgeT0iNTAiIHdpZHRoPSIzNDAiIGhlaWdodD0iMjgwIiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjEiLz4KPHRleHQgeD0iNDM2IiB5PSI3NCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiM0NDQiIGxldHRlci1zcGFjaW5nPSIyIj5ISVJJTkcgV09SS1NQQUNFPC90ZXh0Pgo8cmVjdCB4PSI0MzYiIHk9IjkwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iIzFlMWUxZSIvPgo8dGV4dCB4PSI0NDYiIHk9IjEwMyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiM1NTUiPkNhbmRpZGF0ZSBuYW1lPC90ZXh0Pgo8cmVjdCB4PSI0MzYiIHk9IjExOCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxOCIgcng9IjMiIGZpbGw9IiMxYTJhNGEiIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNyIvPgo8dGV4dCB4PSI0ODYiIHk9IjEzMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZpbGw9IiMzNzhhZGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkluIHByb2dyZXNzPC90ZXh0Pgo8cmVjdCB4PSI1NDYiIHk9IjExOCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjE4IiByeD0iMyIgZmlsbD0iIzFhM2ExNCIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC43Ii8+Cjx0ZXh0IHg9IjU4NiIgeT0iMTMwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOCIgZmlsbD0iIzFkOWU3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW50ZXJ2aWV3PC90ZXh0Pgo8cmVjdCB4PSI0MzYiIHk9IjE0NiIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIxIiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQzNiIgeT0iMTU4IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQzNiIgeT0iMTcyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQzNiIgeT0iMjAwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzBkMWEyYSIgc3Ryb2tlPSIjMWE0ZmQ2IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+Cjx0ZXh0IHg9IjU4NiIgeT0iMjE5IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOCIgZmlsbD0iIzM3OGFkZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjEiPk1JQ1JPU09GVCBGT1JNUyBTWU5DPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjQwMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+RFVUQ0ggUFJPQ0VTUyBJTk5PVkFUT1JTIMK3IERVQUwgV09SS1NQQUNFPC90ZXh0Pgo8L3N2Zz4=" alt="Dutch Process Innovators workspace"></div>
+          <div class="project-card-body">
+            <h3>Dutch Process Innovators</h3>
+            <p>Two Relatics workspaces — a systems engineering MVP for client projects and an internal hiring tracker with Microsoft Forms integration.</p>
+            <div class="card-footer">
+              <div class="tags"><span class="tag tag-blue">Relatics</span><span class="tag tag-purple">Multi-workspace</span></div>
+              <span class="view-link">View →</span>
             </div>
-            <span class="view-link">View →</span>
           </div>
         </a>
-
       </div>
     </div>
 
@@ -655,18 +261,7 @@
       <p class="about-body">I'm Mathieu van den Bos, a freelancer based in The Hague specialising in two complementary disciplines: building applications in Relatics for complex engineering and infrastructure projects, and steering products as a Product Owner.</p>
       <p class="about-body">I work at the intersection of structure and strategy — whether that means designing a data model in Relatics or owning a product backlog and shaping UX decisions with a development team.</p>
       <div class="skills-list">
-        <span class="skill-pill">Relatics</span>
-        <span class="skill-pill">Workspace design</span>
-        <span class="skill-pill">Data modelling</span>
-        <span class="skill-pill">Systems engineering</span>
-        <span class="skill-pill">Requirements management</span>
-        <span class="skill-pill">Product ownership</span>
-        <span class="skill-pill">Backlog management</span>
-        <span class="skill-pill">UX collaboration</span>
-        <span class="skill-pill">Agile / Scrum</span>
-        <span class="skill-pill">Infrastructure projects</span>
-        <span class="skill-pill">Change management</span>
-        <span class="skill-pill">Integrations &amp; web services</span>
+        <span class="skill-pill">Relatics</span><span class="skill-pill">Workspace design</span><span class="skill-pill">Data modelling</span><span class="skill-pill">Systems engineering</span><span class="skill-pill">Requirements management</span><span class="skill-pill">Product ownership</span><span class="skill-pill">Backlog management</span><span class="skill-pill">UX collaboration</span><span class="skill-pill">Agile / Scrum</span><span class="skill-pill">Infrastructure projects</span><span class="skill-pill">Change management</span><span class="skill-pill">Integrations &amp; web services</span>
       </div>
     </div>
 
@@ -676,362 +271,92 @@
       <p class="eyebrow">Contact</p>
       <p class="section-heading">Get in touch</p>
       <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-label">Email</div>
-          <div class="contact-value"><a href="mailto:mathieu@mathieuvandenbos.nl">mathieu@mathieuvandenbos.nl</a></div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-label">Phone</div>
-          <div class="contact-value"><a href="tel:+31638759713">+31 6 38 75 97 13</a></div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-label">LinkedIn</div>
-          <div class="contact-value"><a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">mathieu-van-den-bos</a></div>
-        </div>
+        <div class="contact-card"><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:mathieu@mathieuvandenbos.nl">mathieu@mathieuvandenbos.nl</a></div></div>
+        <div class="contact-card"><div class="contact-label">Phone</div><div class="contact-value"><a href="tel:+31638759713">+31 6 38 75 97 13</a></div></div>
+        <div class="contact-card"><div class="contact-label">LinkedIn</div><div class="contact-value"><a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">mathieu-van-den-bos</a></div></div>
       </div>
-      <div class="address-card">
-        <div class="contact-label">Location</div>
-        <div class="contact-value" style="margin-top: 4px;">Cylinderstraat 20, 2516 XS Den Haag</div>
-      </div>
+      <div class="address-card"><div class="contact-label">Location</div><div class="contact-value" style="margin-top:4px;">Cylinderstraat 20, 2516 XS Den Haag</div></div>
     </div>
   </div>
+  <footer><div class="footer-inner"><p>© 2026 Mathieu van den Bos</p><div style="display:flex;gap:1.5rem;"><a href="mailto:mathieu@mathieuvandenbos.nl">Email</a><a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a></div></div></footer>
+</div>
 
-  <footer>
-    <div class="footer-inner">
-      <p>© 2026 Mathieu van den Bos</p>
-      <div style="display:flex; gap: 1.5rem;">
-        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
-        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
-
-</div><!-- /home -->
-
-
-<!-- QIRION PAGE -->
 <div id="page-qirion" class="page">
   <div class="detail-wrap">
     <button class="back-btn" onclick="showPage('home')">← Back to work</button>
-
     <div class="detail-hero-card">
-      <p class="eyebrow">Case study</p>
-      <h1>Qirion library &amp; project workspace</h1>
-      <div class="tags" style="margin-top: 0.75rem;">
-        <span class="tag tag-blue">Relatics</span>
-        <span class="tag tag-teal">Workspace design</span>
-        <span class="tag tag-amber">Energy infrastructure</span>
-        <span class="tag tag-teal">Systems engineering</span>
-      </div>
-      <p class="detail-intro">Qirion is a Dutch energy infrastructure company — part of Alliander — that designs, builds, and maintains high-voltage and complex medium-voltage power grids to help enable the energy transition. I designed and implemented a scalable Relatics setup to replace a fragmented, Excel-based approach to requirements and asset data management, laying the foundation for over 300 active projects running in Relatics today.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>The challenge</h3>
-      <p>All requirements — including standards for asset data and systems engineering — were managed in Excel in a non-standardised way. This made it extremely difficult to track which requirements were applicable to a given project, monitor progress, and maintain consistency across engagements. Every new project involved significant manual setup, duplication of effort, and the risk of diverging structures between teams.</p>
-      <p>The goal was to design a scalable setup that reduced duplication, improved consistency, and made it significantly easier to start and manage new projects in a controlled, repeatable way.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>What I built</h3>
-      <p>I designed and implemented a Relatics setup consisting of a central library workspace and separate project workspaces. The library workspace acts as the authoritative source for reusable templates, reference data, and standard structures. Project workspaces can be created in a consistent and repeatable way by applying the right project parameters — no reinventing the wheel for each new engagement.</p>
-      <p>This required clear data model decisions about what should be standardised centrally and what should remain project-specific. I worked on the information model structure, the setup of reusable objects and relations, and the processes for transferring and reusing data between workspaces.</p>
-      <div class="two-col">
-        <div class="mini-card">
-          <div class="mini-card-label">Library workspace</div>
-          <div class="mini-card-title">Central source of truth</div>
-          <div class="mini-card-desc">Reusable templates, reference data, and standard structures — managed once, applied across all projects.</div>
-        </div>
-        <div class="mini-card">
-          <div class="mini-card-label">Project workspaces</div>
-          <div class="mini-card-title">Consistent by design</div>
-          <div class="mini-card-desc">Each project workspace spins up from the same controlled foundation, with project-specific parameters applied on top.</div>
-        </div>
-      </div>
-      <div class="feature-list">
-        <span class="feature-pill">Data modelling</span>
-        <span class="feature-pill">Imports &amp; exports</span>
-        <span class="feature-pill">Reports &amp; dashboards</span>
-        <span class="feature-pill">Permissions</span>
-        <span class="feature-pill">Structured overviews</span>
-        <span class="feature-pill">Templates</span>
-        <span class="feature-pill">Web services / integrations</span>
+      <div class="detail-hero-img"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDgwMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSIjMGQxMTE3Ii8+CjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDE4IiByeD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWUyYTNhIiBzdHJva2Utd2lkdGg9IjEiLz4KPHJlY3QgeD0iNDAiIHk9IjUwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjI4IiByeD0iNCIgZmlsbD0iIzBkMjEzNyIvPgo8cmVjdCB4PSI0MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjgiIHJ4PSI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjUiLz4KPHRleHQgeD0iMTQwIiB5PSI2OSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMzc4YWRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+TElCUkFSWSBXT1JLU1BBQ0U8L3RleHQ+CjxyZWN0IHg9IjMwMCIgeT0iNTAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjgiIHJ4PSI0IiBmaWxsPSIjMGQyMTM3IiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iMzkwIiB5PSI2OSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMzc4YWRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+UFJPSkVDVCBXUyAwMDE8L3RleHQ+CjxyZWN0IHg9IjUwMCIgeT0iNTAiIHdpZHRoPSIxODAiIGhlaWdodD0iMjgiIHJ4PSI0IiBmaWxsPSIjMGQyMTM3IiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iNTkwIiB5PSI2OSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMzc4YWRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+UFJPSkVDVCBXUyAwMDI8L3RleHQ+CjxsaW5lIHgxPSIyNDAiIHkxPSI2NCIgeDI9IjMwMCIgeTI9IjY0IiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjUiLz4KPGxpbmUgeDE9IjQ4MCIgeTE9IjY0IiB4Mj0iNTAwIiB5Mj0iNjQiIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuMyIvPgo8cmVjdCB4PSI0MCIgeT0iMTIwIiB3aWR0aD0iNzIwIiBoZWlnaHQ9IjEiIGZpbGw9IiMxZTJhM2EiLz4KPHJlY3QgeD0iNDAiIHk9IjE0MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjEyMCIgeT0iMTQwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjI4MCIgeT0iMTQwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjQwMCIgeT0iMTQwIiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiMwZDIxMzciLz4KPHJlY3QgeD0iNDAiIHk9IjE2MiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjEyMCIgeT0iMTYyIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjI4MCIgeT0iMTYyIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjQwMCIgeT0iMTYyIiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiMwYTNhMWEiLz4KPHJlY3QgeD0iNDAiIHk9IjE4NCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjEyMCIgeT0iMTg0IiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjI4MCIgeT0iMTg0IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjQwMCIgeT0iMTg0IiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiMwZDIxMzciLz4KPHJlY3QgeD0iNDAiIHk9IjIwNiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjEyMCIgeT0iMjA2IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjI4MCIgeT0iMjA2IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjgiIHJ4PSIyIiBmaWxsPSIjMWUyYTNhIi8+CjxyZWN0IHg9IjQwMCIgeT0iMjA2IiB3aWR0aD0iODAiIGhlaWdodD0iOCIgcng9IjIiIGZpbGw9IiMwYTNhMWEiLz4KPHJlY3QgeD0iNDAiIHk9IjI0MCIgd2lkdGg9IjM0MCIgaGVpZ2h0PSI2MCIgcng9IjYiIGZpbGw9IiMwZDIxMzciIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNCIvPgo8dGV4dCB4PSI2MCIgeT0iMjYyIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM1NTUiIGxldHRlci1zcGFjaW5nPSIxIj5SRVFVSVJFTUVOVFM8L3RleHQ+Cjx0ZXh0IHg9IjYwIiB5PSIyODIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzM3OGFkZCI+MzAwKzwvdGV4dD4KPHJlY3QgeD0iNDIwIiB5PSIyNDAiIHdpZHRoPSIzNDAiIGhlaWdodD0iNjAiIHJ4PSI2IiBmaWxsPSIjMGQyMTM3IiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjQiLz4KPHRleHQgeD0iNDQwIiB5PSIyNjIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzU1NSIgbGV0dGVyLXNwYWNpbmc9IjEiPkFDVElWRSBQUk9KRUNUUzwvdGV4dD4KPHRleHQgeD0iNDQwIiB5PSIyODIiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzM3OGFkZCI+MzAwKzwvdGV4dD4KPHRleHQgeD0iNDAwIiB5PSI0MDAiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiPlFJUklPTiDCtyBSRUxBVElDUyBXT1JLU1BBQ0U8L3RleHQ+Cjwvc3ZnPg==" alt="Qirion workspace"></div>
+      <div class="detail-hero-body">
+        <p class="eyebrow">Case study</p>
+        <h1>Qirion library &amp; project workspace</h1>
+        <div class="tags" style="margin-top:0.75rem;"><span class="tag tag-blue">Relatics</span><span class="tag tag-teal">Workspace design</span><span class="tag tag-amber">Energy infrastructure</span><span class="tag tag-teal">Systems engineering</span></div>
+        <p class="detail-intro">Qirion is a Dutch energy infrastructure company — part of Alliander — that designs, builds, and maintains high-voltage and complex medium-voltage power grids to help enable the energy transition. I designed and implemented a scalable Relatics setup to replace a fragmented, Excel-based approach to requirements and asset data management, laying the foundation for over 300 active projects running in Relatics today.</p>
       </div>
     </div>
-
-    <div class="detail-section">
-      <h3>Outcome</h3>
-      <p>The new setup gave Qirion a more repeatable and controlled way of starting and managing projects. It reduced manual setup work, improved consistency between projects, and created a stronger basis for scaling Relatics use across the organisation. Teams now work within a shared structure — less time reinventing project setups, fewer inconsistencies between workspaces, and a clearer foundation for future work.</p>
-      <p>Standards for TenneT and Liander — covering asset data and technical requirements for systems engineering — are now managed centrally within this environment.</p>
-      <div class="stat-row">
-        <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Active projects in Relatics</div></div>
-        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Grid operators' standards managed</div></div>
-        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Central library, many projects</div></div>
-      </div>
-      <div class="outcome-pills">
-        <span class="outcome-pill">Reduced manual setup</span>
-        <span class="outcome-pill">Consistent project structures</span>
-        <span class="outcome-pill">Scalable across 300+ projects</span>
-        <span class="outcome-pill">TenneT &amp; Liander standards managed</span>
-      </div>
-    </div>
+    <div class="detail-section"><h3>The challenge</h3><p>All requirements — including standards for asset data and systems engineering — were managed in Excel in a non-standardised way. This made it extremely difficult to track which requirements were applicable to a given project, monitor progress, and maintain consistency across engagements. Every new project involved significant manual setup, duplication of effort, and the risk of diverging structures between teams.</p><p>The goal was to design a scalable setup that reduced duplication, improved consistency, and made it significantly easier to start and manage new projects in a controlled, repeatable way.</p></div>
+    <div class="detail-section"><h3>What I built</h3><p>I designed and implemented a Relatics setup consisting of a central library workspace and separate project workspaces. The library workspace acts as the authoritative source for reusable templates, reference data, and standard structures. Project workspaces can be created in a consistent and repeatable way by applying the right project parameters — no reinventing the wheel for each new engagement.</p><p>This required clear data model decisions about what should be standardised centrally and what should remain project-specific. I worked on the information model structure, the setup of reusable objects and relations, and the processes for transferring and reusing data between workspaces.</p><div class="two-col"><div class="mini-card"><div class="mini-card-label">Library workspace</div><div class="mini-card-title">Central source of truth</div><div class="mini-card-desc">Reusable templates, reference data, and standard structures — managed once, applied across all projects.</div></div><div class="mini-card"><div class="mini-card-label">Project workspaces</div><div class="mini-card-title">Consistent by design</div><div class="mini-card-desc">Each project workspace spins up from the same controlled foundation, with project-specific parameters applied on top.</div></div></div><div class="feature-list"><span class="feature-pill">Data modelling</span><span class="feature-pill">Imports &amp; exports</span><span class="feature-pill">Reports &amp; dashboards</span><span class="feature-pill">Permissions</span><span class="feature-pill">Structured overviews</span><span class="feature-pill">Templates</span><span class="feature-pill">Web services / integrations</span></div></div>
+    <div class="detail-section"><h3>Outcome</h3><p>The new setup gave Qirion a more repeatable and controlled way of starting and managing projects. It reduced manual setup work, improved consistency between projects, and created a stronger basis for scaling Relatics use across the organisation. Standards for TenneT and Liander — covering asset data and technical requirements for systems engineering — are now managed centrally within this environment.</p><div class="stat-row"><div class="stat"><div class="stat-num">300+</div><div class="stat-label">Active projects in Relatics</div></div><div class="stat"><div class="stat-num">2</div><div class="stat-label">Grid operators' standards managed</div></div><div class="stat"><div class="stat-num">1</div><div class="stat-label">Central library, many projects</div></div></div><div class="outcome-pills"><span class="outcome-pill">Reduced manual setup</span><span class="outcome-pill">Consistent project structures</span><span class="outcome-pill">Scalable across 300+ projects</span><span class="outcome-pill">TenneT &amp; Liander standards managed</span></div></div>
   </div>
-  <footer>
-    <div class="footer-inner">
-      <p>© 2026 Mathieu van den Bos</p>
-      <div style="display:flex; gap: 1.5rem;">
-        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
-        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><p>© 2026 Mathieu van den Bos</p><div style="display:flex;gap:1.5rem;"><a href="mailto:mathieu@mathieuvandenbos.nl">Email</a><a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a></div></div></footer>
 </div>
 
-
-<!-- TENNET PAGE -->
 <div id="page-tennet" class="page">
   <div class="detail-wrap">
     <button class="back-btn" onclick="showPage('home')">← Back to work</button>
-
     <div class="detail-hero-card">
-      <p class="eyebrow">Case study</p>
-      <h1>TenneT 2GW programme</h1>
-      <div class="tags" style="margin-top: 0.75rem;">
-        <span class="tag tag-blue">Relatics</span>
-        <span class="tag tag-amber">Energy infrastructure</span>
-        <span class="tag tag-teal">Systems engineering</span>
-        <span class="tag tag-purple">Change management</span>
-      </div>
-      <p class="detail-intro">TenneT's 2GW programme is one of Europe's most ambitious offshore grid build-outs — 14 standardised HVDC connection systems across the Dutch and German North Sea, totalling 28 GW of transmission capacity. I helped design and implement the Relatics environment that manages this programme's requirements, partnerships, and contracts at scale — now used by over 1,000 active users each month.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>The programme</h3>
-      <p>TenneT is the Dutch and German transmission system operator responsible for delivering offshore grid connections at a scale and speed the sector has never attempted before. Rather than treating each connection as a bespoke project, the 2GW programme introduces an industrialised approach: repeatable 525 kV HVDC platform designs, framework contracts with major delivery partners, and a programme structure that spans all 14 connections simultaneously.</p>
-      <p>Key delivery partners include Hitachi Energy, Petrofac, Siemens Energy, and Dragados Offshore. The programme underpins national offshore wind targets in both the Netherlands and Germany, supporting TenneT's broader 40 GW offshore ambition by 2030.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>The challenge</h3>
-      <p>Managing changes to configuration items across a programme of this scale was largely uncontrolled. A version control system existed, but there was no structured way to manage changes in a controlled, traceable manner — meaning requirement updates could be applied inconsistently across partnerships and contracts, with no clear audit trail.</p>
-      <p>Beyond change management, the team needed a systematic way to manage contract control (SCC — systematic contract control) and to shift their thinking from managing individual projects to managing the programme as a whole.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>What I built</h3>
-      <p>Together with the team, I designed and implemented a three-tier Relatics workspace architecture — library, partnership, and contract — each connected to the others, reflecting how the programme is actually structured.</p>
-      <div class="arch-grid">
-        <div class="mini-card">
-          <div class="mini-card-label">Tier 1</div>
-          <div class="mini-card-title">Library</div>
-          <div class="mini-card-desc">Central source for 20,000+ requirements. Evolves with new insights and pushes accepted changes downstream.</div>
-        </div>
-        <div class="arch-arrow">→</div>
-        <div class="mini-card">
-          <div class="mini-card-label">Tier 2</div>
-          <div class="mini-card-title">Partnership</div>
-          <div class="mini-card-desc">Framework agreement between TenneT and a contractor. Forms the basis for individual contracts.</div>
-        </div>
-        <div class="arch-arrow">→</div>
-        <div class="mini-card">
-          <div class="mini-card-label">Tier 3</div>
-          <div class="mini-card-title">Contract</div>
-          <div class="mini-card-desc">The actual delivery unit — landstation, sea cables, offshore platform. All traceable back to the library.</div>
-        </div>
-      </div>
-      <p style="margin-top: 1rem;">The library acts as the starting point for each new partnership. When standards evolve, changes can be communicated to contractors and — once accepted — pushed through to relevant partnerships and contracts in a controlled way. This enabled systematic contract control (SCC) and gave the programme a live overview of which requirements apply where and where deviations exist.</p>
-      <div class="feature-list">
-        <span class="feature-pill">Change management</span>
-        <span class="feature-pill">Systematic contract control</span>
-        <span class="feature-pill">Requirements traceability</span>
-        <span class="feature-pill">Deviation management</span>
-        <span class="feature-pill">Multi-workspace architecture</span>
-        <span class="feature-pill">Reports &amp; dashboards</span>
-        <span class="feature-pill">Permissions</span>
-        <span class="feature-pill">Web services / integrations</span>
+      <div class="detail-hero-img"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDgwMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSIjMGEwZTE0Ii8+CjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDE4IiByeD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWUyODIwIiBzdHJva2Utd2lkdGg9IjEiLz4KPGNpcmNsZSBjeD0iNDAwIiBjeT0iMTkwIiByPSIxMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBmMmExYSIgc3Ryb2tlLXdpZHRoPSI0MCIvPgo8Y2lyY2xlIGN4PSI0MDAiIGN5PSIxOTAiIHI9IjEzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMyIvPgo8Y2lyY2xlIGN4PSI0MDAiIGN5PSIxOTAiIHI9IjkwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZDllNzUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjIiLz4KPGNpcmNsZSBjeD0iNDAwIiBjeT0iMTkwIiByPSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4xNSIvPgo8cmVjdCB4PSIxNjAiIHk9IjE3NSIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI4IiByeD0iNSIgZmlsbD0iIzBhMWYxMiIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIyMDAiIHk9IjE5MyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMxZDllNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIwLjUiPkxJQlJBUlk8L3RleHQ+CjxsaW5lIHgxPSIyNDAiIHkxPSIxODkiIHgyPSIzMTAiIHkyPSIxODkiIHN0cm9rZT0iIzFkOWU3NSIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNiIvPgo8cmVjdCB4PSIzMTAiIHk9IjE3NSIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI4IiByeD0iNSIgZmlsbD0iIzBhMWYxMiIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSIzNTAiIHk9IjE5MyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMxZDllNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIwLjUiPlBBUlRORVI8L3RleHQ+CjxsaW5lIHgxPSIzOTAiIHkxPSIxODkiIHgyPSI0NjAiIHkyPSIxODkiIHN0cm9rZT0iIzFkOWU3NSIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNiIvPgo8cmVjdCB4PSI0NjAiIHk9IjE3NSIgd2lkdGg9IjgwIiBoZWlnaHQ9IjI4IiByeD0iNSIgZmlsbD0iIzBhMWYxMiIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8dGV4dCB4PSI1MDAiIHk9IjE5MyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMxZDllNzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIwLjUiPkNPTlRSQUNUPC90ZXh0Pgo8dGV4dCB4PSIyMDAiIHk9IjI5MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMzMzIiBsZXR0ZXItc3BhY2luZz0iMSI+MjAsMDAwKzwvdGV4dD4KPHRleHQgeD0iMjAwIiB5PSIzMDQiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4IiBmaWxsPSIjMzMzIiBsZXR0ZXItc3BhY2luZz0iMSI+UkVRVUlSRU1FTlRTPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjI5MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+MSwwMDArPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjMwNCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZpbGw9IiMzMzMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIxIj5VU0VSUyAvIE1PTlRIPC90ZXh0Pgo8dGV4dCB4PSI2MDAiIHk9IjI5MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0iZW5kIiBsZXR0ZXItc3BhY2luZz0iMSI+MjggR1c8L3RleHQ+Cjx0ZXh0IHg9IjYwMCIgeT0iMzA0IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOCIgZmlsbD0iIzMzMyIgdGV4dC1hbmNob3I9ImVuZCIgbGV0dGVyLXNwYWNpbmc9IjEiPkNBUEFDSVRZPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjQwMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+VEVOTkVUIDJHVyDCtyBOT1JUSCBTRUEgUFJPR1JBTU1FPC90ZXh0Pgo8L3N2Zz4=" alt="TenneT programme"></div>
+      <div class="detail-hero-body">
+        <p class="eyebrow">Case study</p>
+        <h1>TenneT 2GW programme</h1>
+        <div class="tags" style="margin-top:0.75rem;"><span class="tag tag-blue">Relatics</span><span class="tag tag-amber">Energy infrastructure</span><span class="tag tag-teal">Systems engineering</span><span class="tag tag-purple">Change management</span></div>
+        <p class="detail-intro">TenneT's 2GW programme is one of Europe's most ambitious offshore grid build-outs — 14 standardised HVDC connection systems across the Dutch and German North Sea, totalling 28 GW of transmission capacity. I helped design and implement the Relatics environment that manages this programme's requirements, partnerships, and contracts at scale — now used by over 1,000 active users each month.</p>
       </div>
     </div>
-
-    <div class="detail-section">
-      <h3>Outcome</h3>
-      <p>The programme now has a live, structured overview of which requirements are applicable in which contract and where deviations exist — something that was simply not possible before. Change management on configuration items is controlled and traceable, and the library-to-contract chain ensures consistency across a programme of unprecedented scale.</p>
-      <div class="stat-row">
-        <div class="stat"><div class="stat-num">1,000+</div><div class="stat-label">Active users per month</div></div>
-        <div class="stat"><div class="stat-num">20,000+</div><div class="stat-label">Requirements in the library</div></div>
-        <div class="stat"><div class="stat-num">28 GW</div><div class="stat-label">Transmission capacity supported</div></div>
-      </div>
-      <div class="stat-row-4">
-        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Central library</div></div>
-        <div class="stat"><div class="stat-num">14</div><div class="stat-label">Partnerships</div></div>
-        <div class="stat"><div class="stat-num">34</div><div class="stat-label">Contracts</div></div>
-        <div class="stat"><div class="stat-num">14</div><div class="stat-label">HVDC connections</div></div>
-      </div>
-      <div class="outcome-pills">
-        <span class="outcome-pill">Live requirements overview</span>
-        <span class="outcome-pill">Controlled change management</span>
-        <span class="outcome-pill">Deviation tracking per contract</span>
-        <span class="outcome-pill">Programme-level visibility</span>
-      </div>
-    </div>
+    <div class="detail-section"><h3>The programme</h3><p>TenneT is the Dutch and German transmission system operator responsible for delivering offshore grid connections at a scale and speed the sector has never attempted before. Rather than treating each connection as a bespoke project, the 2GW programme introduces an industrialised approach: repeatable 525 kV HVDC platform designs, framework contracts with major delivery partners, and a programme structure that spans all 14 connections simultaneously.</p><p>Key delivery partners include Hitachi Energy, Petrofac, Siemens Energy, and Dragados Offshore. The programme underpins national offshore wind targets in both the Netherlands and Germany, supporting TenneT's broader 40 GW offshore ambition by 2030.</p></div>
+    <div class="detail-section"><h3>The challenge</h3><p>Managing changes to configuration items across a programme of this scale was largely uncontrolled. A version control system existed, but there was no structured way to manage changes in a controlled, traceable manner — meaning requirement updates could be applied inconsistently across partnerships and contracts, with no clear audit trail.</p><p>Beyond change management, the team needed a systematic way to manage contract control (SCC — systematic contract control) and to shift their thinking from managing individual projects to managing the programme as a whole.</p></div>
+    <div class="detail-section"><h3>What I built</h3><p>Together with the team, I designed and implemented a three-tier Relatics workspace architecture — library, partnership, and contract — each connected to the others, reflecting how the programme is actually structured.</p><div class="arch-grid"><div class="mini-card"><div class="mini-card-label">Tier 1</div><div class="mini-card-title">Library</div><div class="mini-card-desc">Central source for 20,000+ requirements. Evolves and pushes accepted changes downstream.</div></div><div class="arch-arrow">→</div><div class="mini-card"><div class="mini-card-label">Tier 2</div><div class="mini-card-title">Partnership</div><div class="mini-card-desc">Framework agreement between TenneT and a contractor. Basis for individual contracts.</div></div><div class="arch-arrow">→</div><div class="mini-card"><div class="mini-card-label">Tier 3</div><div class="mini-card-title">Contract</div><div class="mini-card-desc">The delivery unit — landstation, sea cables, offshore platform. Traceable to the library.</div></div></div><p style="margin-top:1rem;">The library acts as the starting point for each new partnership. When standards evolve, changes can be communicated to contractors and — once accepted — pushed through to relevant partnerships and contracts in a controlled way.</p><div class="feature-list"><span class="feature-pill">Change management</span><span class="feature-pill">Systematic contract control</span><span class="feature-pill">Requirements traceability</span><span class="feature-pill">Deviation management</span><span class="feature-pill">Multi-workspace architecture</span><span class="feature-pill">Reports &amp; dashboards</span><span class="feature-pill">Permissions</span><span class="feature-pill">Web services / integrations</span></div></div>
+    <div class="detail-section"><h3>Outcome</h3><p>The programme now has a live, structured overview of which requirements are applicable in which contract and where deviations exist. Change management on configuration items is controlled and traceable, and the library-to-contract chain ensures consistency across a programme of unprecedented scale.</p><div class="stat-row"><div class="stat"><div class="stat-num">1,000+</div><div class="stat-label">Active users per month</div></div><div class="stat"><div class="stat-num">20,000+</div><div class="stat-label">Requirements in the library</div></div><div class="stat"><div class="stat-num">28 GW</div><div class="stat-label">Transmission capacity supported</div></div></div><div class="stat-row-4"><div class="stat"><div class="stat-num">1</div><div class="stat-label">Central library</div></div><div class="stat"><div class="stat-num">14</div><div class="stat-label">Partnerships</div></div><div class="stat"><div class="stat-num">34</div><div class="stat-label">Contracts</div></div><div class="stat"><div class="stat-num">14</div><div class="stat-label">HVDC connections</div></div></div><div class="outcome-pills"><span class="outcome-pill">Live requirements overview</span><span class="outcome-pill">Controlled change management</span><span class="outcome-pill">Deviation tracking per contract</span><span class="outcome-pill">Programme-level visibility</span></div></div>
   </div>
-  <footer>
-    <div class="footer-inner">
-      <p>© 2026 Mathieu van den Bos</p>
-      <div style="display:flex; gap: 1.5rem;">
-        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
-        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><p>© 2026 Mathieu van den Bos</p><div style="display:flex;gap:1.5rem;"><a href="mailto:mathieu@mathieuvandenbos.nl">Email</a><a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a></div></div></footer>
 </div>
 
-
-<!-- GAPPLESS PAGE -->
 <div id="page-gappless" class="page">
   <div class="detail-wrap">
     <button class="back-btn" onclick="showPage('home')">← Back to work</button>
-
     <div class="detail-hero-card">
-      <p class="eyebrow">Case study</p>
-      <h1>Gappless — Product Owner</h1>
-      <div class="tags" style="margin-top: 0.75rem;">
-        <span class="tag tag-purple">Product Owner</span>
-        <span class="tag tag-teal">UX</span>
-        <span class="tag tag-blue">SaaS</span>
-        <span class="tag tag-teal">Construction tech</span>
-      </div>
-      <p class="detail-intro">Gappless is a construction-focused SaaS platform combining a web environment for project preparation and management with a mobile app for on-site field execution. As part-time Product Owner, I shaped the product direction, owned the backlog, and worked closely with development and UX to drive the product forward in a more focused, user-centred direction.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>The product</h3>
-      <p>Gappless connects office teams and field workers in one unified workflow. The web platform is used by project managers and administrators to prepare projects, define templates, manage findings and measures, set up inspection plans, and review incoming field data.</p>
-      <p>The mobile app serves on-site users — allowing them to capture registrations, photos, findings, and follow-up information directly in the field, often in offline-first or low-connectivity situations. Together, they form a system that guides teams through structured inspections using TouchForms and bridges the gap between preparation and execution.</p>
-      <div class="two-col">
-        <div class="mini-card">
-          <div class="mini-card-label">Web platform</div>
-          <div class="mini-card-title">Project preparation &amp; management</div>
-          <div class="mini-card-desc">Templates, findings, inspection plans, reporting, and reviewing incoming field data.</div>
-        </div>
-        <div class="mini-card">
-          <div class="mini-card-label">Mobile app</div>
-          <div class="mini-card-title">Field execution, offline-first</div>
-          <div class="mini-card-desc">Registrations, photos, findings, and follow-ups captured on-site in challenging connectivity conditions.</div>
-        </div>
+      <div class="detail-hero-img" style="background:#f8f8f8;"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDgwMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSIjZjhmOGY4Ii8+CjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDE4IiByeD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTBlMGUwIiBzdHJva2Utd2lkdGg9IjEiLz4KPHJlY3QgeD0iNDAiIHk9IjQwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjMyMCIgcng9IjEwIiBmaWxsPSIjZmZmZmZmIiBzdHJva2U9IiNlOGU4ZTgiIHN0cm9rZS13aWR0aD0iMSIvPgo8cmVjdCB4PSI0MCIgeT0iNDAiIHdpZHRoPSIzNDAiIGhlaWdodD0iNDQiIHJ4PSIxMCIgZmlsbD0iI2YyZjJmMiIgc3Ryb2tlPSIjZThlOGU4IiBzdHJva2Utd2lkdGg9IjEiLz4KPHJlY3QgeD0iNDAiIHk9Ijc0IiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjEwIiByeD0iMCIgZmlsbD0iI2YyZjJmMiIvPgo8dGV4dCB4PSI1NiIgeT0iNjYiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzk5OSIgbGV0dGVyLXNwYWNpbmc9IjEiPldFQiBQTEFURk9STTwvdGV4dD4KPHJlY3QgeD0iNTYiIHk9IjEwNCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI4IiByeD0iMiIgZmlsbD0iI2U4ZThlOCIvPgo8cmVjdCB4PSI1NiIgeT0iMTIwIiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZjBmMGYwIi8+CjxyZWN0IHg9IjU2IiB5PSIxMzIiIHdpZHRoPSIyNDAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iNTYiIHk9IjE1MiIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyOCIgcng9IjUiIGZpbGw9IiMxYTRmZDYiIG9wYWNpdHk9IjAuOSIvPgo8cmVjdCB4PSIxODgiIHk9IjE1MiIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyOCIgcng9IjUiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iNTYiIHk9IjE5OCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIxIiBmaWxsPSIjZjBmMGYwIi8+CjxyZWN0IHg9IjU2IiB5PSIyMTQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iI2U4ZThlOCIvPgo8cmVjdCB4PSIxMjYiIHk9IjIxNCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iI2YwZjBmMCIvPgo8cmVjdCB4PSIyODYiIHk9IjIxNCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZThmNGVlIi8+CjxyZWN0IHg9IjU2IiB5PSIyMjgiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iI2U4ZThlOCIvPgo8cmVjdCB4PSIxMjYiIHk9IjIyOCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iI2YwZjBmMCIvPgo8cmVjdCB4PSI1NiIgeT0iMjQyIiB3aWR0aD0iNjAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiNlOGU4ZTgiLz4KPHJlY3QgeD0iMTI2IiB5PSIyNDIiIHdpZHRoPSIxMjAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iNTYiIHk9IjI1NiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZThlOGU4Ii8+CjxyZWN0IHg9IjEyNiIgeT0iMjU2IiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZjBmMGYwIi8+CjxyZWN0IHg9IjQyMCIgeT0iODAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMjgwIiByeD0iMTQiIGZpbGw9IiMxYTFhMWEiLz4KPHJlY3QgeD0iNDI4IiB5PSI5NiIgd2lkdGg9IjE0NCIgaGVpZ2h0PSIyNDgiIHJ4PSI4IiBmaWxsPSIjMTExIi8+CjxyZWN0IHg9IjQzNiIgeT0iMTEwIiB3aWR0aD0iMTI4IiBoZWlnaHQ9IjE4IiByeD0iMyIgZmlsbD0iIzFlMWUxZSIvPgo8dGV4dCB4PSI1MDAiIHk9IjEyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIxIj5NT0JJTEUgQVBQPC90ZXh0Pgo8cmVjdCB4PSI0MzYiIHk9IjEzNiIgd2lkdGg9IjEyOCIgaGVpZ2h0PSI2MCIgcng9IjQiIGZpbGw9IiMxZTFlMWUiLz4KPHJlY3QgeD0iNDQ0IiB5PSIxNDQiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzJhMmEyYSIvPgo8cmVjdCB4PSI0NDQiIHk9IjE1NiIgd2lkdGg9IjExMiIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzJhMmEyYSIvPgo8cmVjdCB4PSI0NDQiIHk9IjE2OCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWE0ZmQ2IiBvcGFjaXR5PSIwLjYiLz4KPHJlY3QgeD0iNDM2IiB5PSIyMDYiIHdpZHRoPSIxMjgiIGhlaWdodD0iNDAiIHJ4PSI0IiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQ0NCIgeT0iMjE0IiB3aWR0aD0iNTAiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiMyYTJhMmEiLz4KPHJlY3QgeD0iNDQ0IiB5PSIyMjQiIHdpZHRoPSIxMTIiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiMyYTJhMmEiLz4KPHJlY3QgeD0iNDM2IiB5PSIyNTYiIHdpZHRoPSIxMjgiIGhlaWdodD0iNDAiIHJ4PSI0IiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQ0NCIgeT0iMjY0IiB3aWR0aD0iNzAiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiMyYTJhMmEiLz4KPHJlY3QgeD0iNDQ0IiB5PSIyNzQiIHdpZHRoPSI5MCIgaGVpZ2h0PSI1IiByeD0iMiIgZmlsbD0iIzJhMmEyYSIvPgo8bGluZSB4MT0iMzgwIiB5MT0iMjEwIiB4Mj0iNDIwIiB5Mj0iMjEwIiBzdHJva2U9IiNlMGUwZTAiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWRhc2hhcnJheT0iNCAzIi8+Cjx0ZXh0IHg9IjQwMCIgeT0iNDAwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiNiYmIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIyIj5HQVBQTEVTUyDCtyBXRUIgJmFtcDsgTU9CSUxFIFBMQVRGT1JNPC90ZXh0Pgo8L3N2Zz4=" alt="Gappless platform"></div>
+      <div class="detail-hero-body">
+        <p class="eyebrow">Case study</p>
+        <h1>Gappless — Product Owner</h1>
+        <div class="tags" style="margin-top:0.75rem;"><span class="tag tag-purple">Product Owner</span><span class="tag tag-teal">UX</span><span class="tag tag-blue">SaaS</span><span class="tag tag-teal">Construction tech</span></div>
+        <p class="detail-intro">Gappless is a construction-focused SaaS platform combining a web environment for project preparation and management with a mobile app for on-site field execution. As part-time Product Owner, I shaped the product direction, owned the backlog, and worked closely with development and UX to drive the product forward in a more focused, user-centred direction.</p>
       </div>
     </div>
-
-    <div class="detail-section">
-      <h3>My role as Product Owner</h3>
-      <p>I was responsible for shaping the product direction and translating user needs into a clear, prioritised backlog for the development team. In practice, this meant working closely with developers and the UX designer to define what to build, why it mattered, and how it should work — making day-to-day decisions on scope, sequencing, and trade-offs between usability, technical feasibility, and business value.</p>
-      <p>A strong part of my role combined product ownership with UX thinking. I didn't just define features at a high level — I helped steer user flows, interaction design, and functional details. This included validating user problems, refining concepts into workable solutions, and ensuring the product stayed intuitive for the different user groups it served.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>Key product decisions</h3>
-      <p>I shaped decisions across project setup, field registrations, reporting, workflows, and integrations. This involved deciding which problems to solve first, how to keep the product manageable for users, and where to simplify or standardise functionality across customers.</p>
-      <p>My contribution was strongest in translating real user pain points into concrete improvements — redesigning workflows, introducing new features, simplifying complex screens, and improving reporting and export. In each case, I continuously balanced short-term delivery needs with the longer-term product vision, and strong user wishes against technical limitations and development capacity.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>Outcome</h3>
-      <p>The product evolved in a more focused and user-centred direction, with clearer priorities for the team and features that better matched day-to-day usage in the field. Key deliverables during this period included findings, measures, and inspection plans.</p>
-      <p>From a team perspective, this way of working created more clarity on priorities and a stronger shared understanding of why features were being built. From a user perspective, the result was better usability, more consistency across the platform, faster workflows, and improved insight.</p>
-      <div class="outcome-pills">
-        <span class="outcome-pill">Findings &amp; measures shipped</span>
-        <span class="outcome-pill">Inspection plans delivered</span>
-        <span class="outcome-pill">Clearer team priorities</span>
-        <span class="outcome-pill">Better usability</span>
-        <span class="outcome-pill">Faster workflows</span>
-      </div>
-    </div>
+    <div class="detail-section"><h3>The product</h3><p>Gappless connects office teams and field workers in one unified workflow. The web platform is used by project managers and administrators to prepare projects, define templates, manage findings and measures, set up inspection plans, and review incoming field data.</p><p>The mobile app serves on-site users — allowing them to capture registrations, photos, findings, and follow-up information directly in the field, often in offline-first or low-connectivity situations. Together, they guide teams through structured inspections using TouchForms, bridging the gap between office preparation and field execution.</p><div class="two-col"><div class="mini-card"><div class="mini-card-label">Web platform</div><div class="mini-card-title">Project preparation &amp; management</div><div class="mini-card-desc">Templates, findings, inspection plans, reporting, and reviewing incoming field data.</div></div><div class="mini-card"><div class="mini-card-label">Mobile app</div><div class="mini-card-title">Field execution, offline-first</div><div class="mini-card-desc">Registrations, photos, findings, and follow-ups captured on-site in challenging connectivity conditions.</div></div></div></div>
+    <div class="detail-section"><h3>My role as Product Owner</h3><p>I was responsible for shaping the product direction and translating user needs into a clear, prioritised backlog for the development team — making day-to-day decisions on scope, sequencing, and trade-offs between usability, technical feasibility, and business value.</p><p>A strong part of my role combined product ownership with UX thinking. I helped steer user flows, interaction design, and functional details — validating user problems, refining concepts into workable solutions, and ensuring the product stayed intuitive for the different user groups it served.</p></div>
+    <div class="detail-section"><h3>Key product decisions</h3><p>I shaped decisions across project setup, field registrations, reporting, workflows, and integrations — deciding which problems to solve first, how to keep the product manageable, and where to simplify or standardise functionality across customers.</p><p>My contribution was strongest in translating real user pain points into concrete improvements — redesigning workflows, introducing new features, simplifying complex screens, and improving reporting and export. In each case, I balanced short-term delivery needs with the longer-term product vision.</p></div>
+    <div class="detail-section"><h3>Outcome</h3><p>The product evolved in a more focused and user-centred direction, with clearer priorities for the team and features that better matched day-to-day usage in the field. Key deliverables during this period included findings, measures, and inspection plans.</p><div class="outcome-pills"><span class="outcome-pill">Findings &amp; measures shipped</span><span class="outcome-pill">Inspection plans delivered</span><span class="outcome-pill">Clearer team priorities</span><span class="outcome-pill">Better usability</span><span class="outcome-pill">Faster workflows</span></div></div>
   </div>
-  <footer>
-    <div class="footer-inner">
-      <p>© 2026 Mathieu van den Bos</p>
-      <div style="display:flex; gap: 1.5rem;">
-        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
-        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><p>© 2026 Mathieu van den Bos</p><div style="display:flex;gap:1.5rem;"><a href="mailto:mathieu@mathieuvandenbos.nl">Email</a><a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a></div></div></footer>
 </div>
 
-
-<!-- DPI PAGE -->
 <div id="page-dpi" class="page">
   <div class="detail-wrap">
     <button class="back-btn" onclick="showPage('home')">← Back to work</button>
-
     <div class="detail-hero-card">
-      <p class="eyebrow">Case study</p>
-      <h1>Dutch Process Innovators workspaces</h1>
-      <div class="tags" style="margin-top: 0.75rem;">
-        <span class="tag tag-blue">Relatics</span>
-        <span class="tag tag-teal">Systems engineering</span>
-        <span class="tag tag-purple">Multi-workspace</span>
-        <span class="tag tag-amber">Microsoft Forms integration</span>
-      </div>
-      <p class="detail-intro">Dutch Process Innovators (DPI) is a Dutch consultancy helping organisations in construction, infrastructure, and energy deliver complex projects more effectively. I built two distinct Relatics environments for them: a project workspace MVP for structured systems engineering across client engagements, and an internal hiring workspace — complete with email notifications and a Microsoft Forms integration for capturing leads at events.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>The challenge</h3>
-      <p>DPI needed two things solved at once. On the project side, they lacked a standardised way to manage their client projects with systems engineering — each engagement started from scratch, with no shared structure for requirements, objects, work packages, or activities. The goal was a reusable foundation they could hand off to their own team to build on further.</p>
-      <p>On the internal side, tracking new and potential hires was ad hoc — conversations, backgrounds, and follow-up tasks were scattered with no central overview, no task ownership, and no way to keep the right people informed automatically.</p>
-    </div>
-
-    <div class="detail-section">
-      <h3>What I built</h3>
-      <p>I delivered two separate Relatics workspaces, each designed for a very different purpose — demonstrating how far Relatics can stretch beyond its traditional engineering use cases.</p>
-      <div class="two-col">
-        <div class="mini-card">
-          <div class="mini-card-label">Workspace 1 — project management</div>
-          <div class="mini-card-title">Systems engineering MVP</div>
-          <div class="mini-card-desc">A clear data model covering requirements, objects, work packages, and activities — built as a solid foundation DPI could extend for each new client engagement.</div>
-        </div>
-        <div class="mini-card">
-          <div class="mini-card-label">Workspace 2 — internal hiring</div>
-          <div class="mini-card-title">Recruitment tracker</div>
-          <div class="mini-card-desc">Candidate profiles, conversation history, background info, internal tasks, and an email notification system to keep responsible people updated on open actions.</div>
-        </div>
-      </div>
-      <div class="highlight-box">
-        <p>A Microsoft Forms integration was built into the hiring workspace — allowing DPI to collect contact information at events via a form, which synced directly and automatically into Relatics. A practical bridge between field outreach and internal follow-up.</p>
-      </div>
-      <div class="feature-list">
-        <span class="feature-pill">Data modelling</span>
-        <span class="feature-pill">Requirements management</span>
-        <span class="feature-pill">Work packages &amp; activities</span>
-        <span class="feature-pill">Task management</span>
-        <span class="feature-pill">Email notifications</span>
-        <span class="feature-pill">Microsoft Forms integration</span>
-        <span class="feature-pill">Web services / integrations</span>
+      <div class="detail-hero-img"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQyMCIgdmlld0JveD0iMCAwIDgwMCA0MjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSIjMGYwZjBlIi8+CjxyZWN0IHg9IjEiIHk9IjEiIHdpZHRoPSI3OTgiIGhlaWdodD0iNDE4IiByeD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjEiLz4KPHJlY3QgeD0iNDAiIHk9IjUwIiB3aWR0aD0iMzQwIiBoZWlnaHQ9IjI4MCIgcng9IjgiIGZpbGw9IiMxNDE0MTQiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjx0ZXh0IHg9IjU2IiB5PSI3NCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiM0NDQiIGxldHRlci1zcGFjaW5nPSIyIj5QUk9KRUNUIFdPUktTUEFDRTwvdGV4dD4KPHJlY3QgeD0iNTYiIHk9Ijg2IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMjIyIi8+CjxyZWN0IHg9IjU2IiB5PSIxMDAiIHdpZHRoPSIyODAiIGhlaWdodD0iMSIgZmlsbD0iIzFlMWUxZSIvPgo8cmVjdCB4PSI1NiIgeT0iMTEyIiB3aWR0aD0iNTAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiMxZTFlMWUiLz4KPHJlY3QgeD0iMTE2IiB5PSIxMTIiIHdpZHRoPSIxMzAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiMxZTFlMWUiLz4KPHJlY3QgeD0iNTYiIHk9IjEyNiIgd2lkdGg9IjUwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjExNiIgeT0iMTI2IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWEzYTE0Ii8+CjxyZWN0IHg9IjU2IiB5PSIxNDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzFlMWUxZSIvPgo8cmVjdCB4PSIxMTYiIHk9IjE0MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzFlMWUxZSIvPgo8cmVjdCB4PSI1NiIgeT0iMTU0IiB3aWR0aD0iNTAiIGhlaWdodD0iNiIgcng9IjIiIGZpbGw9IiMxZTFlMWUiLz4KPHJlY3QgeD0iMTE2IiB5PSIxNTQiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2IiByeD0iMiIgZmlsbD0iIzFhM2ExNCIvPgo8cmVjdCB4PSI1NiIgeT0iMTc0IiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjIyIiByeD0iNCIgZmlsbD0iIzFhMmE0YSIgc3Ryb2tlPSIjMWE0ZmQ2IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC44Ii8+Cjx0ZXh0IHg9IjEyNiIgeT0iMTg4IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0iIzM3OGFkZCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UmVxdWlyZW1lbnRzPC90ZXh0Pgo8cmVjdCB4PSIyMDYiIHk9IjE3NCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIyMiIgcng9IjQiIGZpbGw9IiMxYTJhNGEiIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNSIvPgo8dGV4dCB4PSIyNTYiIHk9IjE4OCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMzNzhhZGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9iamVjdHM8L3RleHQ+CjxyZWN0IHg9IjU2IiB5PSIyMTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMjIiIHJ4PSI0IiBmaWxsPSIjMWEyYTRhIiBzdHJva2U9IiMxYTRmZDYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjUiLz4KPHRleHQgeD0iMTA2IiB5PSIyMjQiIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmaWxsPSIjMzc4YWRkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Xb3JrIHBhY2thZ2VzPC90ZXh0Pgo8cmVjdCB4PSIxNjYiIHk9IjIxMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIyMiIgcng9IjQiIGZpbGw9IiMxYTJhNGEiIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNSIvPgo8dGV4dCB4PSIyMTYiIHk9IjIyNCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiMzNzhhZGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFjdGl2aXRpZXM8L3RleHQ+CjxyZWN0IHg9IjQyMCIgeT0iNTAiIHdpZHRoPSIzNDAiIGhlaWdodD0iMjgwIiByeD0iOCIgZmlsbD0iIzE0MTQxNCIgc3Ryb2tlPSIjMjIyIiBzdHJva2Utd2lkdGg9IjEiLz4KPHRleHQgeD0iNDM2IiB5PSI3NCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiM0NDQiIGxldHRlci1zcGFjaW5nPSIyIj5ISVJJTkcgV09SS1NQQUNFPC90ZXh0Pgo8cmVjdCB4PSI0MzYiIHk9IjkwIiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjIwIiByeD0iNCIgZmlsbD0iIzFlMWUxZSIvPgo8dGV4dCB4PSI0NDYiIHk9IjEwMyIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiM1NTUiPkNhbmRpZGF0ZSBuYW1lPC90ZXh0Pgo8cmVjdCB4PSI0MzYiIHk9IjExOCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxOCIgcng9IjMiIGZpbGw9IiMxYTJhNGEiIHN0cm9rZT0iIzFhNGZkNiIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNyIvPgo8dGV4dCB4PSI0ODYiIHk9IjEzMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZpbGw9IiMzNzhhZGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkluIHByb2dyZXNzPC90ZXh0Pgo8cmVjdCB4PSI1NDYiIHk9IjExOCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjE4IiByeD0iMyIgZmlsbD0iIzFhM2ExNCIgc3Ryb2tlPSIjMWQ5ZTc1IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC43Ii8+Cjx0ZXh0IHg9IjU4NiIgeT0iMTMwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOCIgZmlsbD0iIzFkOWU3NSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SW50ZXJ2aWV3PC90ZXh0Pgo8cmVjdCB4PSI0MzYiIHk9IjE0NiIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIxIiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQzNiIgeT0iMTU4IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQzNiIgeT0iMTcyIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjMWUxZTFlIi8+CjxyZWN0IHg9IjQzNiIgeT0iMjAwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwIiByeD0iNSIgZmlsbD0iIzBkMWEyYSIgc3Ryb2tlPSIjMWE0ZmQ2IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+Cjx0ZXh0IHg9IjU4NiIgeT0iMjE5IiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOCIgZmlsbD0iIzM3OGFkZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjEiPk1JQ1JPU09GVCBGT1JNUyBTWU5DPC90ZXh0Pgo8dGV4dCB4PSI0MDAiIHk9IjQwMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjMzMzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMiI+RFVUQ0ggUFJPQ0VTUyBJTk5PVkFUT1JTIMK3IERVQUwgV09SS1NQQUNFPC90ZXh0Pgo8L3N2Zz4=" alt="Dutch Process Innovators workspace"></div>
+      <div class="detail-hero-body">
+        <p class="eyebrow">Case study</p>
+        <h1>Dutch Process Innovators workspaces</h1>
+        <div class="tags" style="margin-top:0.75rem;"><span class="tag tag-blue">Relatics</span><span class="tag tag-teal">Systems engineering</span><span class="tag tag-purple">Multi-workspace</span><span class="tag tag-amber">Microsoft Forms integration</span></div>
+        <p class="detail-intro">Dutch Process Innovators (DPI) is a Dutch consultancy helping organisations in construction, infrastructure, and energy deliver complex projects more effectively. I built two distinct Relatics environments for them: a project workspace MVP for structured systems engineering, and an internal hiring workspace complete with email notifications and a Microsoft Forms integration for capturing leads at events.</p>
       </div>
     </div>
-
-    <div class="detail-section">
-      <h3>Outcome</h3>
-      <p>DPI now has a repeatable, structured starting point for new client projects — a clean data model they can confidently extend without starting from scratch. The hiring workspace replaced scattered tracking with a single, actionable overview: candidate status, conversation history, open tasks, and automated notifications all in one place.</p>
-      <p>The Microsoft Forms integration means contacts captured at events flow directly into the hiring workspace — removing a manual data entry step and ensuring no lead falls through the cracks after an event.</p>
-      <div class="outcome-pills">
-        <span class="outcome-pill">Reusable project workspace MVP</span>
-        <span class="outcome-pill">Structured hiring tracker</span>
-        <span class="outcome-pill">Automated email notifications</span>
-        <span class="outcome-pill">Microsoft Forms sync</span>
-        <span class="outcome-pill">Extended use of Relatics</span>
-      </div>
-    </div>
+    <div class="detail-section"><h3>The challenge</h3><p>DPI needed two things solved at once. On the project side, they lacked a standardised way to manage their client projects with systems engineering — each engagement started from scratch with no shared structure for requirements, objects, work packages, or activities.</p><p>On the internal side, tracking new and potential hires was ad hoc — conversations, backgrounds, and follow-up tasks were scattered with no central overview, no task ownership, and no way to keep the right people informed automatically.</p></div>
+    <div class="detail-section"><h3>What I built</h3><p>I delivered two separate Relatics workspaces, each designed for a very different purpose — demonstrating how far Relatics can stretch beyond its traditional engineering use cases.</p><div class="two-col"><div class="mini-card"><div class="mini-card-label">Workspace 1 — project management</div><div class="mini-card-title">Systems engineering MVP</div><div class="mini-card-desc">A clear data model covering requirements, objects, work packages, and activities — built as a foundation DPI could extend for each new client engagement.</div></div><div class="mini-card"><div class="mini-card-label">Workspace 2 — internal hiring</div><div class="mini-card-title">Recruitment tracker</div><div class="mini-card-desc">Candidate profiles, conversation history, background info, internal tasks, and email notifications to keep responsible people updated on open actions.</div></div></div><div class="highlight-box"><p>A Microsoft Forms integration was built into the hiring workspace — allowing DPI to collect contact information at events via a form, which synced directly and automatically into Relatics.</p></div><div class="feature-list"><span class="feature-pill">Data modelling</span><span class="feature-pill">Requirements management</span><span class="feature-pill">Work packages &amp; activities</span><span class="feature-pill">Task management</span><span class="feature-pill">Email notifications</span><span class="feature-pill">Microsoft Forms integration</span><span class="feature-pill">Web services / integrations</span></div></div>
+    <div class="detail-section"><h3>Outcome</h3><p>DPI now has a repeatable, structured starting point for new client projects — a clean data model they can confidently extend without starting from scratch. The hiring workspace replaced scattered tracking with a single, actionable overview: candidate status, conversation history, open tasks, and automated notifications all in one place.</p><div class="outcome-pills"><span class="outcome-pill">Reusable project workspace MVP</span><span class="outcome-pill">Structured hiring tracker</span><span class="outcome-pill">Automated email notifications</span><span class="outcome-pill">Microsoft Forms sync</span><span class="outcome-pill">Extended use of Relatics</span></div></div>
   </div>
-  <footer>
-    <div class="footer-inner">
-      <p>© 2026 Mathieu van den Bos</p>
-      <div style="display:flex; gap: 1.5rem;">
-        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
-        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><p>© 2026 Mathieu van den Bos</p><div style="display:flex;gap:1.5rem;"><a href="mailto:mathieu@mathieuvandenbos.nl">Email</a><a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a></div></div></footer>
 </div>
 
 <script>
