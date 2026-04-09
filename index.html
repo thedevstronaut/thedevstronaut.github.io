@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathieu van den Bos — Relatics Expert & Product Owner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --border-mid: rgba(0,0,0,0.14);
+    --text: #0f0f0e;
+    --muted: #6b6b65;
+    --hint: #a8a8a0;
+    --accent: #1a4fd6;
+    --accent-light: #e8eefb;
+    --accent-text: #1a3d9e;
+    --teal: #0d7a5f;
+    --teal-light: #e0f5ee;
+    --teal-text: #085545;
+    --amber: #8a5000;
+    --amber-light: #faecd8;
+    --amber-text: #6b3d00;
+    --purple: #4a3db0;
+    --purple-light: #eeedfe;
+    --purple-text: #32278a;
+    --radius: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 22px;
+    --font: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  /* NAV */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247,246,242,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .nav-logo {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.75rem;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { opacity: 0.82; }
+
+  /* LAYOUT BLOCKS */
+  .section { padding: 4.5rem 0; }
+  .section + .section { padding-top: 0; }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 0 4rem;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-available {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--teal-text);
+    background: var(--teal-light);
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+  .hero-available-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 strong {
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 440px;
+    margin-bottom: 2rem;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+  .btn-dark { background: var(--text); color: var(--bg); }
+  .btn-dark:hover { opacity: 0.82; }
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-mid); }
+  .btn-ghost:hover { background: var(--surface); }
+  .hero-avatar {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--accent-text);
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+  }
+
+  /* SPECIALTIES */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 3rem;
+  }
+  .spec-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+  .spec-icon {
+    width: 38px; height: 38px;
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 17px;
+  }
+  .spec-card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .spec-card p {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* SECTION HEADERS */
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--hint);
+    margin-bottom: 0.5rem;
+  }
+  .section-heading {
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  /* PROJECT CARDS */
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .project-card:hover {
+    border-color: var(--border-mid);
+    transform: translateY(-2px);
+  }
+  .project-card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .project-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .view-link {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* TAGS */
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 400;
+  }
+  .tag-blue { background: var(--accent-light); color: var(--accent-text); }
+  .tag-teal { background: var(--teal-light); color: var(--teal-text); }
+  .tag-amber { background: var(--amber-light); color: var(--amber-text); }
+  .tag-purple { background: var(--purple-light); color: var(--purple-text); }
+
+  /* ABOUT */
+  .about-body {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    max-width: 640px;
+  }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
+  .skill-pill {
+    font-size: 12.5px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border-mid);
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+  }
+  .contact-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--hint);
+    margin-bottom: 6px;
+  }
+  .contact-value {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    word-break: break-all;
+  }
+  .contact-value a { color: var(--accent); text-decoration: none; }
+  .contact-value a:hover { text-decoration: underline; }
+  .address-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+  }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* PROJECT DETAIL PAGES */
+  .detail-wrap { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    color: var(--muted);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--font);
+    padding: 0;
+    margin-bottom: 2rem;
+    transition: color 0.15s;
+  }
+  .back-btn:hover { color: var(--text); }
+  .detail-hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .detail-hero-card h1 {
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.75rem;
+    line-height: 1.15;
+  }
+  .detail-hero-card .detail-intro {
+    font-size: 15.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 620px;
+    margin-top: 1.25rem;
+  }
+  .detail-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .detail-section h3 {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+  }
+  .detail-section p {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+  .detail-section p:last-child { margin-bottom: 0; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+  .mini-card {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+  }
+  .mini-card-label { font-size: 11px; color: var(--hint); margin-bottom: 4px; letter-spacing: 0.04em; }
+  .mini-card-title { font-size: 13.5px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .mini-card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 1rem;
+  }
+  .stat-row-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .stat {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 1rem;
+    text-align: center;
+  }
+  .stat-num { font-size: 22px; font-weight: 500; color: var(--text); letter-spacing: -0.02em; }
+  .stat-label { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+
+  .feature-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1rem; }
+  .feature-pill {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border-mid);
+  }
+
+  .outcome-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1rem; }
+  .outcome-pill {
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--teal-light);
+    color: var(--teal-text);
+    font-weight: 500;
+  }
+
+  .highlight-box {
+    background: var(--accent-light);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+  }
+  .highlight-box p {
+    font-size: 13.5px;
+    color: var(--accent-text);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 28px 1fr 28px 1fr;
+    gap: 0;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .arch-arrow { text-align: center; font-size: 18px; color: var(--hint); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    margin-top: 4rem;
+  }
+  .footer-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-inner p { font-size: 13px; color: var(--hint); }
+  .footer-inner a { color: var(--muted); text-decoration: none; font-size: 13px; }
+  .footer-inner a:hover { color: var(--text); }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-avatar { display: none; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .project-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-row-4 { grid-template-columns: repeat(2, 1fr); }
+    .arch-grid { grid-template-columns: 1fr; }
+    .arch-arrow { transform: rotate(90deg); }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-logo" onclick="showPage('home')">Mathieu van den Bos.</a>
+    <div class="nav-links">
+      <a onclick="showPage('home'); scrollToId('work')">Work</a>
+      <a onclick="showPage('home'); scrollToId('about')">About</a>
+      <a onclick="showPage('home'); scrollToId('contact')">Contact</a>
+    </div>
+    <button class="nav-cta" onclick="showPage('home'); scrollToId('contact')">Hire me</button>
+  </nav>
+</header>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active">
+
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-available">
+            <span class="hero-available-dot"></span>
+            Available for projects
+          </div>
+          <h1>Relatics expert.<br><strong>Product thinker.</strong></h1>
+          <p class="hero-sub">I build powerful Relatics applications and guide teams as Product Owner — turning complex requirements into systems that actually work.</p>
+          <div class="hero-actions">
+            <button class="btn btn-dark" onclick="scrollToId('work')">See my work</button>
+            <button class="btn btn-ghost" onclick="scrollToId('contact')">Get in touch</button>
+          </div>
+        </div>
+        <div class="hero-avatar">MvdB</div>
+      </div>
+    </div>
+
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-icon" style="background: var(--accent-light);">⚙</div>
+        <h3>Relatics application development</h3>
+        <p>I design and build Relatics environments for complex engineering and infrastructure projects — data models, workspaces, and integrations.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-icon" style="background: var(--purple-light);">◈</div>
+        <h3>Product Owner</h3>
+        <p>I bridge business and delivery teams — owning the backlog, shaping UX, and steering products from idea to launch with clarity and decisiveness.</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="section" id="work">
+      <p class="eyebrow">Portfolio</p>
+      <p class="section-heading">Selected work</p>
+      <div class="project-grid">
+
+        <a class="project-card" onclick="showPage('qirion')">
+          <h3>Qirion library &amp; project workspace</h3>
+          <p>Scalable Relatics setup replacing fragmented Excel-based requirements management — now powering 300+ active projects.</p>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag tag-blue">Relatics</span>
+              <span class="tag tag-teal">Workspace design</span>
+            </div>
+            <span class="view-link">View →</span>
+          </div>
+        </a>
+
+        <a class="project-card" onclick="showPage('tennet')">
+          <h3>TenneT 2GW programme</h3>
+          <p>Library → partnership → contract architecture managing 20,000+ requirements for TenneT's flagship offshore grid build-out.</p>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag tag-blue">Relatics</span>
+              <span class="tag tag-amber">Energy infrastructure</span>
+            </div>
+            <span class="view-link">View →</span>
+          </div>
+        </a>
+
+        <a class="project-card" onclick="showPage('gappless')">
+          <h3>Gappless — Product Owner</h3>
+          <p>Part-time PO with UX involvement for a construction SaaS — shaping backlog, user flows, and product direction across web and mobile.</p>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag tag-purple">Product Owner</span>
+              <span class="tag tag-teal">UX</span>
+            </div>
+            <span class="view-link">View →</span>
+          </div>
+        </a>
+
+        <a class="project-card" onclick="showPage('dpi')">
+          <h3>Dutch Process Innovators</h3>
+          <p>Two Relatics workspaces — a systems engineering MVP for client projects and an internal hiring tracker with Microsoft Forms integration.</p>
+          <div class="card-footer">
+            <div class="tags">
+              <span class="tag tag-blue">Relatics</span>
+              <span class="tag tag-purple">Multi-workspace</span>
+            </div>
+            <span class="view-link">View →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="section" id="about">
+      <p class="eyebrow">About</p>
+      <p class="section-heading">A bit about me</p>
+      <p class="about-body">I'm Mathieu van den Bos, a freelancer based in The Hague specialising in two complementary disciplines: building applications in Relatics for complex engineering and infrastructure projects, and steering products as a Product Owner.</p>
+      <p class="about-body">I work at the intersection of structure and strategy — whether that means designing a data model in Relatics or owning a product backlog and shaping UX decisions with a development team.</p>
+      <div class="skills-list">
+        <span class="skill-pill">Relatics</span>
+        <span class="skill-pill">Workspace design</span>
+        <span class="skill-pill">Data modelling</span>
+        <span class="skill-pill">Systems engineering</span>
+        <span class="skill-pill">Requirements management</span>
+        <span class="skill-pill">Product ownership</span>
+        <span class="skill-pill">Backlog management</span>
+        <span class="skill-pill">UX collaboration</span>
+        <span class="skill-pill">Agile / Scrum</span>
+        <span class="skill-pill">Infrastructure projects</span>
+        <span class="skill-pill">Change management</span>
+        <span class="skill-pill">Integrations &amp; web services</span>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="section" id="contact">
+      <p class="eyebrow">Contact</p>
+      <p class="section-heading">Get in touch</p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:mathieu@mathieuvandenbos.nl">mathieu@mathieuvandenbos.nl</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Phone</div>
+          <div class="contact-value"><a href="tel:+31638759713">+31 6 38 75 97 13</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value"><a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">mathieu-van-den-bos</a></div>
+        </div>
+      </div>
+      <div class="address-card">
+        <div class="contact-label">Location</div>
+        <div class="contact-value" style="margin-top: 4px;">Cylinderstraat 20, 2516 XS Den Haag</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 Mathieu van den Bos</p>
+      <div style="display:flex; gap: 1.5rem;">
+        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
+        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /home -->
+
+
+<!-- QIRION PAGE -->
+<div id="page-qirion" class="page">
+  <div class="detail-wrap">
+    <button class="back-btn" onclick="showPage('home')">← Back to work</button>
+
+    <div class="detail-hero-card">
+      <p class="eyebrow">Case study</p>
+      <h1>Qirion library &amp; project workspace</h1>
+      <div class="tags" style="margin-top: 0.75rem;">
+        <span class="tag tag-blue">Relatics</span>
+        <span class="tag tag-teal">Workspace design</span>
+        <span class="tag tag-amber">Energy infrastructure</span>
+        <span class="tag tag-teal">Systems engineering</span>
+      </div>
+      <p class="detail-intro">Qirion is a Dutch energy infrastructure company — part of Alliander — that designs, builds, and maintains high-voltage and complex medium-voltage power grids to help enable the energy transition. I designed and implemented a scalable Relatics setup to replace a fragmented, Excel-based approach to requirements and asset data management, laying the foundation for over 300 active projects running in Relatics today.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>The challenge</h3>
+      <p>All requirements — including standards for asset data and systems engineering — were managed in Excel in a non-standardised way. This made it extremely difficult to track which requirements were applicable to a given project, monitor progress, and maintain consistency across engagements. Every new project involved significant manual setup, duplication of effort, and the risk of diverging structures between teams.</p>
+      <p>The goal was to design a scalable setup that reduced duplication, improved consistency, and made it significantly easier to start and manage new projects in a controlled, repeatable way.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>What I built</h3>
+      <p>I designed and implemented a Relatics setup consisting of a central library workspace and separate project workspaces. The library workspace acts as the authoritative source for reusable templates, reference data, and standard structures. Project workspaces can be created in a consistent and repeatable way by applying the right project parameters — no reinventing the wheel for each new engagement.</p>
+      <p>This required clear data model decisions about what should be standardised centrally and what should remain project-specific. I worked on the information model structure, the setup of reusable objects and relations, and the processes for transferring and reusing data between workspaces.</p>
+      <div class="two-col">
+        <div class="mini-card">
+          <div class="mini-card-label">Library workspace</div>
+          <div class="mini-card-title">Central source of truth</div>
+          <div class="mini-card-desc">Reusable templates, reference data, and standard structures — managed once, applied across all projects.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label">Project workspaces</div>
+          <div class="mini-card-title">Consistent by design</div>
+          <div class="mini-card-desc">Each project workspace spins up from the same controlled foundation, with project-specific parameters applied on top.</div>
+        </div>
+      </div>
+      <div class="feature-list">
+        <span class="feature-pill">Data modelling</span>
+        <span class="feature-pill">Imports &amp; exports</span>
+        <span class="feature-pill">Reports &amp; dashboards</span>
+        <span class="feature-pill">Permissions</span>
+        <span class="feature-pill">Structured overviews</span>
+        <span class="feature-pill">Templates</span>
+        <span class="feature-pill">Web services / integrations</span>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3>Outcome</h3>
+      <p>The new setup gave Qirion a more repeatable and controlled way of starting and managing projects. It reduced manual setup work, improved consistency between projects, and created a stronger basis for scaling Relatics use across the organisation. Teams now work within a shared structure — less time reinventing project setups, fewer inconsistencies between workspaces, and a clearer foundation for future work.</p>
+      <p>Standards for TenneT and Liander — covering asset data and technical requirements for systems engineering — are now managed centrally within this environment.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Active projects in Relatics</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Grid operators' standards managed</div></div>
+        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Central library, many projects</div></div>
+      </div>
+      <div class="outcome-pills">
+        <span class="outcome-pill">Reduced manual setup</span>
+        <span class="outcome-pill">Consistent project structures</span>
+        <span class="outcome-pill">Scalable across 300+ projects</span>
+        <span class="outcome-pill">TenneT &amp; Liander standards managed</span>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 Mathieu van den Bos</p>
+      <div style="display:flex; gap: 1.5rem;">
+        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
+        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- TENNET PAGE -->
+<div id="page-tennet" class="page">
+  <div class="detail-wrap">
+    <button class="back-btn" onclick="showPage('home')">← Back to work</button>
+
+    <div class="detail-hero-card">
+      <p class="eyebrow">Case study</p>
+      <h1>TenneT 2GW programme</h1>
+      <div class="tags" style="margin-top: 0.75rem;">
+        <span class="tag tag-blue">Relatics</span>
+        <span class="tag tag-amber">Energy infrastructure</span>
+        <span class="tag tag-teal">Systems engineering</span>
+        <span class="tag tag-purple">Change management</span>
+      </div>
+      <p class="detail-intro">TenneT's 2GW programme is one of Europe's most ambitious offshore grid build-outs — 14 standardised HVDC connection systems across the Dutch and German North Sea, totalling 28 GW of transmission capacity. I helped design and implement the Relatics environment that manages this programme's requirements, partnerships, and contracts at scale — now used by over 1,000 active users each month.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>The programme</h3>
+      <p>TenneT is the Dutch and German transmission system operator responsible for delivering offshore grid connections at a scale and speed the sector has never attempted before. Rather than treating each connection as a bespoke project, the 2GW programme introduces an industrialised approach: repeatable 525 kV HVDC platform designs, framework contracts with major delivery partners, and a programme structure that spans all 14 connections simultaneously.</p>
+      <p>Key delivery partners include Hitachi Energy, Petrofac, Siemens Energy, and Dragados Offshore. The programme underpins national offshore wind targets in both the Netherlands and Germany, supporting TenneT's broader 40 GW offshore ambition by 2030.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>The challenge</h3>
+      <p>Managing changes to configuration items across a programme of this scale was largely uncontrolled. A version control system existed, but there was no structured way to manage changes in a controlled, traceable manner — meaning requirement updates could be applied inconsistently across partnerships and contracts, with no clear audit trail.</p>
+      <p>Beyond change management, the team needed a systematic way to manage contract control (SCC — systematic contract control) and to shift their thinking from managing individual projects to managing the programme as a whole.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>What I built</h3>
+      <p>Together with the team, I designed and implemented a three-tier Relatics workspace architecture — library, partnership, and contract — each connected to the others, reflecting how the programme is actually structured.</p>
+      <div class="arch-grid">
+        <div class="mini-card">
+          <div class="mini-card-label">Tier 1</div>
+          <div class="mini-card-title">Library</div>
+          <div class="mini-card-desc">Central source for 20,000+ requirements. Evolves with new insights and pushes accepted changes downstream.</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="mini-card">
+          <div class="mini-card-label">Tier 2</div>
+          <div class="mini-card-title">Partnership</div>
+          <div class="mini-card-desc">Framework agreement between TenneT and a contractor. Forms the basis for individual contracts.</div>
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="mini-card">
+          <div class="mini-card-label">Tier 3</div>
+          <div class="mini-card-title">Contract</div>
+          <div class="mini-card-desc">The actual delivery unit — landstation, sea cables, offshore platform. All traceable back to the library.</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem;">The library acts as the starting point for each new partnership. When standards evolve, changes can be communicated to contractors and — once accepted — pushed through to relevant partnerships and contracts in a controlled way. This enabled systematic contract control (SCC) and gave the programme a live overview of which requirements apply where and where deviations exist.</p>
+      <div class="feature-list">
+        <span class="feature-pill">Change management</span>
+        <span class="feature-pill">Systematic contract control</span>
+        <span class="feature-pill">Requirements traceability</span>
+        <span class="feature-pill">Deviation management</span>
+        <span class="feature-pill">Multi-workspace architecture</span>
+        <span class="feature-pill">Reports &amp; dashboards</span>
+        <span class="feature-pill">Permissions</span>
+        <span class="feature-pill">Web services / integrations</span>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3>Outcome</h3>
+      <p>The programme now has a live, structured overview of which requirements are applicable in which contract and where deviations exist — something that was simply not possible before. Change management on configuration items is controlled and traceable, and the library-to-contract chain ensures consistency across a programme of unprecedented scale.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="stat-num">1,000+</div><div class="stat-label">Active users per month</div></div>
+        <div class="stat"><div class="stat-num">20,000+</div><div class="stat-label">Requirements in the library</div></div>
+        <div class="stat"><div class="stat-num">28 GW</div><div class="stat-label">Transmission capacity supported</div></div>
+      </div>
+      <div class="stat-row-4">
+        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Central library</div></div>
+        <div class="stat"><div class="stat-num">14</div><div class="stat-label">Partnerships</div></div>
+        <div class="stat"><div class="stat-num">34</div><div class="stat-label">Contracts</div></div>
+        <div class="stat"><div class="stat-num">14</div><div class="stat-label">HVDC connections</div></div>
+      </div>
+      <div class="outcome-pills">
+        <span class="outcome-pill">Live requirements overview</span>
+        <span class="outcome-pill">Controlled change management</span>
+        <span class="outcome-pill">Deviation tracking per contract</span>
+        <span class="outcome-pill">Programme-level visibility</span>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 Mathieu van den Bos</p>
+      <div style="display:flex; gap: 1.5rem;">
+        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
+        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- GAPPLESS PAGE -->
+<div id="page-gappless" class="page">
+  <div class="detail-wrap">
+    <button class="back-btn" onclick="showPage('home')">← Back to work</button>
+
+    <div class="detail-hero-card">
+      <p class="eyebrow">Case study</p>
+      <h1>Gappless — Product Owner</h1>
+      <div class="tags" style="margin-top: 0.75rem;">
+        <span class="tag tag-purple">Product Owner</span>
+        <span class="tag tag-teal">UX</span>
+        <span class="tag tag-blue">SaaS</span>
+        <span class="tag tag-teal">Construction tech</span>
+      </div>
+      <p class="detail-intro">Gappless is a construction-focused SaaS platform combining a web environment for project preparation and management with a mobile app for on-site field execution. As part-time Product Owner, I shaped the product direction, owned the backlog, and worked closely with development and UX to drive the product forward in a more focused, user-centred direction.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>The product</h3>
+      <p>Gappless connects office teams and field workers in one unified workflow. The web platform is used by project managers and administrators to prepare projects, define templates, manage findings and measures, set up inspection plans, and review incoming field data.</p>
+      <p>The mobile app serves on-site users — allowing them to capture registrations, photos, findings, and follow-up information directly in the field, often in offline-first or low-connectivity situations. Together, they form a system that guides teams through structured inspections using TouchForms and bridges the gap between preparation and execution.</p>
+      <div class="two-col">
+        <div class="mini-card">
+          <div class="mini-card-label">Web platform</div>
+          <div class="mini-card-title">Project preparation &amp; management</div>
+          <div class="mini-card-desc">Templates, findings, inspection plans, reporting, and reviewing incoming field data.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label">Mobile app</div>
+          <div class="mini-card-title">Field execution, offline-first</div>
+          <div class="mini-card-desc">Registrations, photos, findings, and follow-ups captured on-site in challenging connectivity conditions.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3>My role as Product Owner</h3>
+      <p>I was responsible for shaping the product direction and translating user needs into a clear, prioritised backlog for the development team. In practice, this meant working closely with developers and the UX designer to define what to build, why it mattered, and how it should work — making day-to-day decisions on scope, sequencing, and trade-offs between usability, technical feasibility, and business value.</p>
+      <p>A strong part of my role combined product ownership with UX thinking. I didn't just define features at a high level — I helped steer user flows, interaction design, and functional details. This included validating user problems, refining concepts into workable solutions, and ensuring the product stayed intuitive for the different user groups it served.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>Key product decisions</h3>
+      <p>I shaped decisions across project setup, field registrations, reporting, workflows, and integrations. This involved deciding which problems to solve first, how to keep the product manageable for users, and where to simplify or standardise functionality across customers.</p>
+      <p>My contribution was strongest in translating real user pain points into concrete improvements — redesigning workflows, introducing new features, simplifying complex screens, and improving reporting and export. In each case, I continuously balanced short-term delivery needs with the longer-term product vision, and strong user wishes against technical limitations and development capacity.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>Outcome</h3>
+      <p>The product evolved in a more focused and user-centred direction, with clearer priorities for the team and features that better matched day-to-day usage in the field. Key deliverables during this period included findings, measures, and inspection plans.</p>
+      <p>From a team perspective, this way of working created more clarity on priorities and a stronger shared understanding of why features were being built. From a user perspective, the result was better usability, more consistency across the platform, faster workflows, and improved insight.</p>
+      <div class="outcome-pills">
+        <span class="outcome-pill">Findings &amp; measures shipped</span>
+        <span class="outcome-pill">Inspection plans delivered</span>
+        <span class="outcome-pill">Clearer team priorities</span>
+        <span class="outcome-pill">Better usability</span>
+        <span class="outcome-pill">Faster workflows</span>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 Mathieu van den Bos</p>
+      <div style="display:flex; gap: 1.5rem;">
+        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
+        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- DPI PAGE -->
+<div id="page-dpi" class="page">
+  <div class="detail-wrap">
+    <button class="back-btn" onclick="showPage('home')">← Back to work</button>
+
+    <div class="detail-hero-card">
+      <p class="eyebrow">Case study</p>
+      <h1>Dutch Process Innovators workspaces</h1>
+      <div class="tags" style="margin-top: 0.75rem;">
+        <span class="tag tag-blue">Relatics</span>
+        <span class="tag tag-teal">Systems engineering</span>
+        <span class="tag tag-purple">Multi-workspace</span>
+        <span class="tag tag-amber">Microsoft Forms integration</span>
+      </div>
+      <p class="detail-intro">Dutch Process Innovators (DPI) is a Dutch consultancy helping organisations in construction, infrastructure, and energy deliver complex projects more effectively. I built two distinct Relatics environments for them: a project workspace MVP for structured systems engineering across client engagements, and an internal hiring workspace — complete with email notifications and a Microsoft Forms integration for capturing leads at events.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>The challenge</h3>
+      <p>DPI needed two things solved at once. On the project side, they lacked a standardised way to manage their client projects with systems engineering — each engagement started from scratch, with no shared structure for requirements, objects, work packages, or activities. The goal was a reusable foundation they could hand off to their own team to build on further.</p>
+      <p>On the internal side, tracking new and potential hires was ad hoc — conversations, backgrounds, and follow-up tasks were scattered with no central overview, no task ownership, and no way to keep the right people informed automatically.</p>
+    </div>
+
+    <div class="detail-section">
+      <h3>What I built</h3>
+      <p>I delivered two separate Relatics workspaces, each designed for a very different purpose — demonstrating how far Relatics can stretch beyond its traditional engineering use cases.</p>
+      <div class="two-col">
+        <div class="mini-card">
+          <div class="mini-card-label">Workspace 1 — project management</div>
+          <div class="mini-card-title">Systems engineering MVP</div>
+          <div class="mini-card-desc">A clear data model covering requirements, objects, work packages, and activities — built as a solid foundation DPI could extend for each new client engagement.</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-card-label">Workspace 2 — internal hiring</div>
+          <div class="mini-card-title">Recruitment tracker</div>
+          <div class="mini-card-desc">Candidate profiles, conversation history, background info, internal tasks, and an email notification system to keep responsible people updated on open actions.</div>
+        </div>
+      </div>
+      <div class="highlight-box">
+        <p>A Microsoft Forms integration was built into the hiring workspace — allowing DPI to collect contact information at events via a form, which synced directly and automatically into Relatics. A practical bridge between field outreach and internal follow-up.</p>
+      </div>
+      <div class="feature-list">
+        <span class="feature-pill">Data modelling</span>
+        <span class="feature-pill">Requirements management</span>
+        <span class="feature-pill">Work packages &amp; activities</span>
+        <span class="feature-pill">Task management</span>
+        <span class="feature-pill">Email notifications</span>
+        <span class="feature-pill">Microsoft Forms integration</span>
+        <span class="feature-pill">Web services / integrations</span>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h3>Outcome</h3>
+      <p>DPI now has a repeatable, structured starting point for new client projects — a clean data model they can confidently extend without starting from scratch. The hiring workspace replaced scattered tracking with a single, actionable overview: candidate status, conversation history, open tasks, and automated notifications all in one place.</p>
+      <p>The Microsoft Forms integration means contacts captured at events flow directly into the hiring workspace — removing a manual data entry step and ensuring no lead falls through the cracks after an event.</p>
+      <div class="outcome-pills">
+        <span class="outcome-pill">Reusable project workspace MVP</span>
+        <span class="outcome-pill">Structured hiring tracker</span>
+        <span class="outcome-pill">Automated email notifications</span>
+        <span class="outcome-pill">Microsoft Forms sync</span>
+        <span class="outcome-pill">Extended use of Relatics</span>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <p>© 2026 Mathieu van den Bos</p>
+      <div style="display:flex; gap: 1.5rem;">
+        <a href="mailto:mathieu@mathieuvandenbos.nl">Email</a>
+        <a href="https://www.linkedin.com/in/mathieu-van-den-bos-79195384/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function scrollToId(id) {
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+</script>
+</body>
+</html>
